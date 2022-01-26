@@ -1,296 +1,284 @@
-#include <math.h>
-#include <stdlib.h>
+/*#include <math.h>
+#include <stdlib.h>*/
 #include <stdio.h>
+#include "ft_canvas.h"
+#include "ft_intersections.h"
+#include "ft_lights.h"
+#include "ft_materials.h"
+#include "ft_matrices.h"
+#include "ft_rays.h"
+#include "ft_spheres.h"
+#include "ft_transformations.h"
+#include "ft_tuples.h"
+#include "ft_world.h"
 
-
-
-int ft_compare_float(float n1, float n2)
+int	main(void)
 {
-	if (fabs(n1 - n2) < 0.00001)
-		return (1);
-	else
-		return (0);
-}
-
-
-
-typedef struct s_projectile
-{
-	t_tuple position;
-	t_tuple velocity;
-}   t_projectile;
-
-typedef struct s_enviroment
-{
-	t_tuple velocity;
-	t_tuple gravity;
-}   t_enviroment;
-
-void    ft_tick(t_enviroment env, t_projectile *proj)
-{
-	proj->position = ft_add_tuples(proj->position, proj->velocity);
-	proj->velocity = ft_add_tuples(proj->velocity, env.gravity);
-}
-
-
-
-
-
-typedef struct s_ray
-{
-	t_tuple origin;
-	t_tuple direction;
-}   t_ray;
-
-t_ray   ft_ray(t_tuple origin, t_tuple direction)
-{
-	t_ray   ray;
-
-	ray.origin = origin;
-	ray.direction = direction;
-	return (ray);
-}
-
-t_tuple ft_ray_position(t_ray ray, float t)
-{
-	return (ft_add_tuples(ray.origin, ft_multiply_tuple(ray.direction, t)));
-}
-
-typedef struct  s_sphere
-{
-	t_tuple 	origin;
-	float   	radius;
-	t_matrix	transform;
-}   t_sphere;
-
-t_sphere    ft_create_sphere()
-{
-	t_sphere    s;
-
-	s.origin = ft_create_point(0,0,0);
-	s.radius = 1;
-	s.transform = ft_matrix_translation(0,0,0);
-	return (s);
-}
-
-t_sphere    ft_create_sphere_translated(t_matrix translation)
-{
-	t_sphere    s;
-
-	s.origin = ft_create_point(0,0,0);
-	s.radius = 1;
-	s.transform = ft_matrix_translation(translation.data[0][3],translation.data[1][3],translation.data[2][3]);
-	return (s);
-}
-
-typedef struct s_intersection
-{
-	float       t;
-	t_sphere    object;
-}  t_intersection;
-
-
-typedef struct s_intersections
-{
-	int             count;
-	t_intersection  *xs;
-} t_intersections;
-
-t_ray	ft_ray_transform(t_ray r, t_matrix m);
-
-t_intersections ft_intersect(t_sphere s, t_ray r)
-{
-	t_intersections inter;
-	t_tuple         sph_to_ray;
-	float           a;
-	float           b;
-	float           c;
-	float           discrimininant;
-	t_ray           nr;
-
-	nr = ft_ray_transform(r, ft_inverse(s.transform));
-	sph_to_ray = ft_subtract_tuples(nr.origin, s.origin);
-	a = ft_tuple_dot(nr.direction, nr.direction);
-	b = 2 * ft_tuple_dot(nr.direction, sph_to_ray);
-	c = ft_tuple_dot(sph_to_ray, sph_to_ray) - pow(s.radius, 2);
-	discrimininant = (pow(b, 2) - (4 * a * c));
-	if (discrimininant < 0)
-	{
-		inter.count = 0;
-		inter.xs = NULL;
-		return (inter);
-	}
-	else
-	{
-		inter.count = 2;
-		inter.xs = malloc(sizeof(t_intersection) * inter.count);
-		inter.xs[0].t = (-b - sqrt(discrimininant)) / (2 * a);
-		inter.xs[0].object = s;
-		inter.xs[1].t = (-b + sqrt(discrimininant)) / (2 * a);
-		inter.xs[1].object = s;
-		return (inter);
-	}
-}
-
-t_intersection  ft_intersection(float t, t_sphere s)
-{
-	t_intersection  i;
-
-	i.t = t;
-	i.object = s;
-	return (i);
-}
-
-t_intersections ft_intersections(t_intersections base, t_intersection inter)
-{
-	t_intersections intersections;
-	int             i; 
-
-	intersections.count = base.count + 1;
-	intersections.xs = malloc(sizeof(t_intersection) * intersections.count);
-	i = 0;
-	while (i < intersections.count - 1)
-	{
-		intersections.xs[i] = base.xs[i];
-		i++;
-	}
-	intersections.xs[i] = inter;
-	return (intersections);
-}
-
-t_intersection	ft_hit(t_intersections inter)
-{
-	int				minpos;
-	int				minvalue;
-	int				i;
-	t_intersection	nul;
-
-	if (inter.count == 0)
-	{
-		nul.t = -1;
-		return (nul);
-	}
-	minpos = -1;
-	minvalue = -1;
-	i = 0;
-	while (i < inter.count)
-	{
-		if ((inter.xs[i].t < minvalue || minvalue == -1) && inter.xs[i].t >= 0)
-		{
-			minpos = i;
-			minvalue = inter.xs[i].t;
-		}
-		i++;
-	}
-	return (inter.xs[minpos]);
-}
-
-t_tuple ft_multiply_matrix_tuple(t_matrix m, t_tuple t)
-{
-	t_tuple     result;
-	t_matrix    origin;
-	t_matrix    neworigin;
-
-	origin = ft_matrix(4,1);
-	origin.data[0][0] = t.x;
-	origin.data[1][0] = t.y;
-	origin.data[2][0] = t.z;
-	origin.data[3][0] = t.w;
-	neworigin = ft_matrix_multiply(m, origin);
-	result.x = neworigin.data[0][0];
-	result.y = neworigin.data[1][0];
-	result.z = neworigin.data[2][0];
-	result.w = neworigin.data[3][0];
-	ft_matrix_free_data(origin);
-	ft_matrix_free_data(neworigin);
-	return (result);
-}
-
-t_ray	ft_ray_transform(t_ray r, t_matrix m)
-{
-	t_ray	new_ray;
-
-	new_ray.origin = ft_multiply_matrix_tuple(m, r.origin);
-	new_ray.direction = ft_multiply_matrix_tuple(m, r.direction);
-	return (new_ray);
-}
-
-void	ft_set_transform(t_sphere s, t_matrix translation)
-{
-	int	x;
-	int	y;
-
+	t_matrix	m;
+	int			x;
+	int			y;
+	m = ft_view_transform(ft_create_point(1, 3, 2), ft_create_point(4, -2, 8), ft_create_vector(1, 1, 0));
 	y = 0;
-	while (y < s.transform.rows && y < translation.rows)
+	while (y < m.rows)
 	{
 		x = 0;
-		while (x < s.transform.cols && y < translation.cols)
+		while (x < m.cols)
 		{
-			s.transform.data[y][x] = translation.data[y][x];
+			printf("%f\t", m.data[y][x]);
+			x++;
+		}
+		y++;
+		printf("\n");
+	}
+	
+	return (0);
+}
+
+/*
+int	main(void)
+{
+	t_world	w;
+	t_ray	r;
+	t_color	c;
+
+	w = ft_world();
+	r = ft_ray(ft_create_point(0,0,-5), ft_create_vector(0,0,1));
+	c = ft_color_at(w, r);
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	return (0);
+}*/
+
+/*
+int	main(void)
+{
+	t_world		w;
+	t_ray		r;
+	t_sphere	shape;
+	t_intersection i;
+	t_comps		comps;
+	t_color		color;
+	t_light		l;
+
+	w = ft_world();
+	l = ft_point_light(ft_create_point(0, 0.25, 0), ft_color(1, 1, 1));
+	r = ft_ray(ft_create_point(0,0,0), ft_create_vector(0,0,1));
+	w = ft_world_add_light(w, l);
+	shape = ft_create_sphere();
+	shape.material.color = ft_color(0.8, 1, 0.6);
+	shape.material.diffuse = 0.7;
+	shape.material.specular = 0.2;
+	w = ft_world_add_sphere(w, shape);
+	i = ft_intersection(0.5, shape);
+	comps = ft_prepare_computations(i, r);
+	color = ft_shade_hit(w, comps);
+	printf("%f %f %f\n", color.red, color.green, color.blue);
+	return (0);
+}*/
+
+/*
+int	main(void)
+{
+	t_ray			ray;
+	t_sphere		shape;
+	t_intersection	inter;
+	t_comps			comps;
+
+	ray = ft_ray(ft_create_point(0, 0, -5), ft_create_vector(0, 0, 1));
+	shape = ft_create_sphere();
+	inter = ft_intersection(4, shape);
+	comps = ft_prepare_computations(inter, ray);
+	printf("%i\n", comps.inside);
+	printf("%f %f %f %f\n", comps.normalv.x, comps.normalv.y, comps.normalv.z, comps.normalv.w);
+	return (0);
+}*/
+
+/*
+int	main(void)
+{
+	t_light		light;
+	t_sphere	s1;
+	t_sphere	s2;
+	t_world		world;
+	t_ray		ray;
+	t_intersections	xs;
+	int			i;
+	t_color		c;
+
+	light = ft_point_light(ft_create_point(-10, 10, -10), ft_color(1,1,1));
+	s1 = ft_create_sphere();
+	s1.material.color = ft_color(0.8, 1, 0.6);
+	s1.material.diffuse = 0.7;
+	s1.material.specular = 0.2;
+	s1.material.ambient = 1;
+	s2 = ft_create_sphere();
+	s2.transform = ft_matrix_scaling(0.5, 0.5, 0.5);
+	s2.material.color = ft_color(0.21,0.22,0.99);
+	s2.material.ambient = 1;
+	world = ft_world();
+	world = ft_world_add_light(world, light);
+	world = ft_world_add_sphere(world, s1);
+	world = ft_world_add_sphere(world, s2);
+	ft_sphere_print(world.spheres[0]);
+	ft_sphere_print(world.spheres[1]);
+	ray = ft_ray(ft_create_point(0, 0, 0.75), ft_create_vector(0, 0, -1));
+	xs = ft_intersect_world(world, ray);
+	printf("%i\n", xs.count);
+	i = 0;
+	while (i < xs.count)
+	{
+		printf("%f\n",xs.xs[i].t);
+		i++;
+	}
+	c = ft_color_at(world, ray);
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	return (0);
+}*/
+
+
+/*
+int	main(void)
+{
+	t_tuple		ray_origin;
+	int			canvas_pixels;
+	float		wall_size;
+	t_canvas	canvas;
+	float		pixel_size;
+	float		half;
+	t_color		color;
+	t_sphere	shape;
+	int			y;
+	float		world_y;
+	int			x;
+	float		world_x;
+	float		wall_z;
+	t_tuple		position;
+	t_ray		r;
+	t_intersections	xs;
+	t_light		light;
+
+	ray_origin = ft_create_point(0, 0, -5);
+	wall_z = 10;
+	wall_size = 7;
+	canvas_pixels = 1000;
+	pixel_size = wall_size / canvas_pixels;
+	half = wall_size / 2;
+
+	canvas = ft_canvas(canvas_pixels, canvas_pixels);
+	color = ft_color(1, 0, 0);
+	shape = ft_create_sphere();
+	shape.material = ft_material();
+	shape.material.color = ft_color(1, 0.2, 1);
+	light = ft_point_light(ft_create_point(-10, 10, -10), ft_color(1, 1, 1));
+	y = 0;
+	while (y < canvas_pixels - 1)
+	{
+		world_y = half - (pixel_size * y);
+		x = 0;
+		while (x < canvas_pixels - 1)
+		{
+			world_x = (half * -1) + pixel_size * x;
+			position = ft_create_point(world_x, world_y, wall_z);
+			r = ft_ray(ray_origin, ft_tuple_normalize(ft_subtract_tuples(position, ray_origin)));
+			xs = ft_intersect(shape, r);
+			if (xs.count > 0 && ft_hit(xs).t != -1)
+			{
+				t_tuple	point;
+				t_tuple	normal;
+				t_tuple	eye;
+				t_intersection	hit;
+
+				hit = ft_hit(xs);
+				point = ft_ray_position(r, hit.t);
+				normal = ft_normal_at(hit.object, point);
+				eye = ft_multiply_tuple(r.direction, -1);
+				color = ft_lighting(hit.object.material, light, point, eye, normal);
+				ft_write_pixel(canvas, x, y, color);
+			}
 			x++;
 		}
 		y++;
 	}
-}
+	ft_canvas_to_ppm(canvas);
+	return (0);
+}*/
 
-t_tuple ft_normal_at(t_sphere s, t_tuple t)
+
+/*
+int	main(void)
 {
-	t_tuple object_point;
-	t_tuple object_normal;
-	t_tuple world_normal;
-	t_tuple result;
+	t_tuple		ray_origin;
+	int			canvas_pixels;
+	float		wall_size;
+	t_canvas	canvas;
+	float		pixel_size;
+	float		half;
+	t_color		color;
+	t_sphere	shape;
+	int			y;
+	float		world_y;
+	int			x;
+	float		world_x;
+	float		wall_z;
+	t_tuple		position;
+	t_ray		r;
+	t_intersections	xs;
 
-	object_point = ft_multiply_matrix_tuple(ft_inverse(s.transform), t);
-	object_normal = ft_subtract_tuples(object_point, ft_create_point(0, 0, 0));
-	world_normal = ft_multiply_matrix_tuple(ft_matrix_transpose(ft_inverse(s.transform)), object_normal);
-	world_normal.w = 0;
-	result =  ft_tuple_normalize(world_normal);
-	return (result);
-}
+	ray_origin = ft_create_point(0, 0, -5);
+	wall_z = 10;
+	wall_size = 7;
+	canvas_pixels = 100;
+	pixel_size = wall_size / canvas_pixels;
+	half = wall_size / 2;
 
-t_tuple	ft_reflect(t_tuple in, t_tuple normal)
-{
-	t_tuple	reflection;
+	canvas = ft_canvas(canvas_pixels, canvas_pixels);
+	color = ft_color(1, 0, 0);
+	shape = ft_create_sphere();
+	y = 0;
+	while (y < canvas_pixels - 1)
+	{
+		world_y = half - (pixel_size * y);
+		x = 0;
+		while (x < canvas_pixels - 1)
+		{
+			world_x = (half * -1) + pixel_size * x;
+			position = ft_create_point(world_x, world_y, wall_z);
+			r = ft_ray(ray_origin, ft_tuple_normalize(ft_subtract_tuples(position, ray_origin)));
+			xs = ft_intersect(shape, r);
+			if (xs.count > 0 && ft_hit(xs).t != -1)
+			{
+				ft_write_pixel(canvas, x, y, color);
+			}
+			x++;
+		}
+		y++;
+	}
+	ft_canvas_to_ppm(canvas);
+	return (0);
+}*/
 
-	reflection = ft_multiply_tuple(ft_multiply_tuple(normal, 2), ft_tuple_dot(in, normal));
-	reflection = ft_subtract_tuples(in, reflection);
-	return (reflection);
-}
 
-typedef struct s_light
-{
-	t_tuple	position;
-	t_tuple	intensity;
-}	t_light;
 
-t_light	ft_point_light(t_tuple position, t_tuple intensity)
-{
-	t_light	light;
-
-	light.position = position;
-	light.intensity = intensity;
-	return (light);
-}
-
-typedef	struct s_material
-{
-	t_color	color;
-	float	ambient;
-	float	diffuse;
-	float	specular;
-	float	shininess;
-} t_material;
-
-t_material ft_material()
+/*
+int	main(void)
 {
 	t_material	m;
+	t_tuple		position;
+	t_tuple		eyev;
+	t_tuple		normalv;
+	t_light		light;
+	t_color		result;
 
-	m.color = ft_color(1, 1, 1);
-	m.ambient = 0.1;
-	m.diffuse = 0.9;
-	m.specular = 0.9;
-	m.shininess = 200;
-}
+	m = ft_material();
+	position = ft_create_point(0, 0, 0);
+
+	eyev = ft_create_vector(0, 0 , -1);
+	normalv = ft_create_vector(0, 0, -1);
+	light = ft_point_light(ft_create_point(0, 0, 10), ft_color(1, 1, 1));
+	result = ft_lighting(m, light, position, eyev, normalv);
+	printf("result\t%f %f %f\n", result.red, result.green, result.blue);
+	return (0);
+}*/
+
 
 /*
 int	main(void)
@@ -558,3 +546,32 @@ int main(void)
 	return (0);
 }*/
 
+/*
+int ft_compare_float(float n1, float n2)
+{
+	if (fabs(n1 - n2) < 0.00001)
+		return (1);
+	else
+		return (0);
+}
+
+
+
+typedef struct s_projectile
+{
+	t_tuple position;
+	t_tuple velocity;
+}   t_projectile;
+
+typedef struct s_enviroment
+{
+	t_tuple velocity;
+	t_tuple gravity;
+}   t_enviroment;
+
+void    ft_tick(t_enviroment env, t_projectile *proj)
+{
+	proj->position = ft_add_tuples(proj->position, proj->velocity);
+	proj->velocity = ft_add_tuples(proj->velocity, env.gravity);
+}
+*/

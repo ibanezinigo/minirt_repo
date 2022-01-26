@@ -1,6 +1,8 @@
 #ifndef FT_TUPLE_H
 # define FT_TUPLE_H
 
+#include "math.h"
+
 typedef struct s_tuple
 {
 	float x;
