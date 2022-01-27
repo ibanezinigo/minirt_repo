@@ -11,7 +11,7 @@ t_canvas ft_canvas(size_t w, size_t h)
 	canvas.height = h;
 	canvas.pixel = malloc(sizeof(t_color *) * canvas.height);
 	i = 0;
-	while (i < canvas.width)
+	while (i < canvas.height)
 	{
 		canvas.pixel[i] = malloc(sizeof(t_color) * canvas.width);
 		i++;
@@ -35,9 +35,15 @@ t_canvas ft_canvas(size_t w, size_t h)
 void    ft_write_pixel(t_canvas canvas, size_t x, size_t y, t_color color)
 {
 	if (x >= canvas.width || x < 0)
+	{
+		printf("error x\n");
 		return ;
+	}
 	if (y >= canvas.height || y < 0)
+	{
+		printf("error y\n");
 		return ;
+	}
 	canvas.pixel[y][x].red = color.red;
 	canvas.pixel[y][x].green = color.green;
 	canvas.pixel[y][x].blue = color.blue;
@@ -70,12 +76,14 @@ void    ft_canvas_to_ppm(t_canvas c)
 	FILE    *f;
 	int     w;
 	int     h;
+	int		total;
 
 	f = fopen("test.ppm", "w+");
 	fprintf(f,"P3\n");
 	fprintf(f,"%zu %zu\n", c.width, c.height);
 	fprintf(f,"255\n");
 	h = 0;
+	total = 0;
 	while (h < c.height)
 	{
 		w = 0;
@@ -84,8 +92,9 @@ void    ft_canvas_to_ppm(t_canvas c)
 			ft_read_pixel(f, c, w, h);
 			if (w < (c.width - 1))
 				fprintf(f, " ");
-			else
+			if ((total + 1) % 5 == 0)
 				fprintf(f, "\n");
+			total++;
 			w++;
 		}
 		h++;

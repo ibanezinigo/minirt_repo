@@ -89,6 +89,7 @@ t_matrix    ft_shearing(t_tuple x, t_tuple y, t_tuple z)
 	return (m);
 }
 
+#include <stdio.h>
 t_tuple ft_multiply_matrix_tuple(t_matrix m, t_tuple t)
 {
 	t_tuple     result;

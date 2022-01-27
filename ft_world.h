@@ -28,6 +28,7 @@ typedef struct  s_world
 }   t_world;
 
 t_world 		ft_world();
+t_world 		ft_default_world();
 t_intersections	ft_intersect_world(t_world world, t_ray ray);
 t_world 		ft_world_add_light(t_world world, t_light newlight);
 t_world 		ft_world_add_sphere(t_world world, t_sphere sphere);

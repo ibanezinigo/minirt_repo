@@ -23,6 +23,27 @@ t_world ft_world()
     return (world);
 }
 
+t_world ft_default_world()
+{
+    t_world     w;
+    t_light     ligth;
+    t_sphere    s1;
+    t_sphere    s2;
+
+    ligth = ft_point_light(ft_create_point(-10, 10, -10), ft_color(1,1,1));
+    s1 = ft_create_sphere();
+    s1.material.color = ft_color(0.8, 1, 0.6);
+    s1.material.diffuse = 0.7;
+    s1.material.specular = 0.2;
+    s2 = ft_create_sphere();
+    s2.transform = ft_matrix_scaling(0.5, 0.5, 0.5);
+    w = ft_world();
+    w = ft_world_add_light(w, ligth);
+    w = ft_world_add_sphere(w, s1);
+    w = ft_world_add_sphere(w, s2);
+    return (w);
+}
+
 t_intersections ft_intersect_world(t_world world, t_ray ray)
 {
     t_intersections xs;
@@ -35,6 +56,7 @@ t_intersections ft_intersect_world(t_world world, t_ray ray)
     i = 0;
     while (i < world.n_spheres)
     {
+        
         tmp = ft_intersect(world.spheres[i], ray);
         xs = ft_add_intersections(xs, tmp);
         i++;
@@ -67,7 +89,6 @@ t_color ft_shade_hit(t_world w, t_comps c)
     i = 0;
     while (i < w.n_lights)
     {
-        printf("%i\n",i);
         result = ft_color_add(result, ft_lighting(c.object.material, w.lights[i], c.point, c.eyev, c.normalv));
         i++;
     }

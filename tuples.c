@@ -11,7 +11,147 @@
 #include "ft_transformations.h"
 #include "ft_tuples.h"
 #include "ft_world.h"
+#include "ft_camera.h"
 
+int	main(void)
+{
+	t_canvas	canvas;
+	t_world		world;
+	t_camera	camera;
+	t_sphere	floor;
+	t_sphere	left_wall;
+	t_sphere	right_wall;
+	t_sphere	middle;
+	t_sphere	right;
+	t_sphere	left;
+	t_light		light;
+
+	floor = ft_create_sphere();
+	floor.transform = ft_matrix_scaling(10, 0.01, 10);
+	floor.material = ft_material();
+	floor.material.color = ft_color(1, 0.9, 0.9);
+	floor.material.specular = 0;
+	printf("floor\n");
+
+	left_wall = ft_create_sphere();
+	left_wall.transform = 	ft_matrix_multiply(
+							ft_matrix_multiply(
+							ft_matrix_multiply(
+								ft_matrix_translation(0,0,5),
+								ft_matrix_rotation_y(M_PI*-1/4)),
+								ft_matrix_rotation_x(M_PI/2)),
+			  					ft_matrix_scaling(10, 0.01, 10));
+	left_wall.material = floor.material;
+	printf("left_wall\n");
+
+	right_wall = ft_create_sphere();
+	right_wall.transform = ft_matrix_multiply(
+							ft_matrix_multiply(
+							ft_matrix_multiply(
+								ft_matrix_translation(0,0,5),
+								ft_matrix_rotation_y(M_PI/4)),
+								ft_matrix_rotation_x(M_PI/2)),
+			  					ft_matrix_scaling(10, 0.01, 10));
+	right_wall.material = floor.material;
+	printf("right_wall\n");
+
+	middle = ft_create_sphere();
+	middle.transform = ft_matrix_translation(-0.5, 1, 0.5);
+	middle.material = ft_material();
+	middle.material.color = ft_color(0.1, 1, 0.5);
+	middle.material.diffuse = 0.7;
+	middle.material.specular = 0.3;
+	printf("middle\n");
+
+	right = ft_create_sphere();
+	right.transform = ft_matrix_multiply(ft_matrix_translation(1.5, 0.5, -0.5), ft_matrix_scaling(0.5, 0.5, 0.5));
+	right.material = ft_material();
+	right.material.color = ft_color(0.5, 1, 0.1);
+	right.material.diffuse = 0.7;
+	right.material.specular = 0.3;
+	printf("right\n");
+
+	left = ft_create_sphere();
+	left.transform = ft_matrix_multiply(ft_matrix_translation(-1.5, 0.33, -0.75), ft_matrix_scaling(0.33, 0.33, 0.33));
+	left.material = ft_material();
+	left.material.color = ft_color(1, 0.8, 0.1);
+	left.material.diffuse = 0.7;
+	left.material.specular = 0.3;
+	printf("left\n");
+
+	light = ft_point_light(ft_create_point(-10, 10, -10), ft_color(1, 1, 1));
+	world = ft_world();
+	world = ft_world_add_light(world, light);
+	world = ft_world_add_sphere(world, floor);
+	world = ft_world_add_sphere(world, left_wall);
+	world = ft_world_add_sphere(world, right_wall);
+	world = ft_world_add_sphere(world, middle);
+	world = ft_world_add_sphere(world, right);
+	world = ft_world_add_sphere(world, left);
+	printf("world\n");
+	printf("%i %i\n", world.n_lights, world.n_spheres);
+	printf("%f %f %f %f\n", world.lights[0].position.x, world.lights[0].position.y, world.lights[0].position.z, world.lights[0].position.w);
+	printf("%f %f %f\n", world.lights[0].intensity.red, world.lights[0].intensity.green, world.lights[0].intensity.blue);
+
+	camera = ft_camera(1000, 500, M_PI/3);
+	camera.transform = ft_view_transform(ft_create_point(0, 1.5, -5), ft_create_point(0, 1, 0), ft_create_vector(0, 1, 0));
+	printf("camera\n");
+
+	canvas = ft_render(camera, world);
+	printf("render\n");
+	ft_canvas_to_ppm(canvas);
+	printf("ppm\n");
+	return (0);
+}
+
+/*
+int	main(void)
+{
+	t_world		w;
+	t_camera	c;
+	t_tuple		from;
+	t_tuple		to;
+	t_tuple		up;
+	t_canvas	image;
+	t_color		color;
+	
+
+	w = ft_default_world();
+	c = ft_camera(11, 11, M_PI/2);
+	from = ft_create_point(0, 0, -5);
+	to = ft_create_point(0, 0, 0);
+	up = ft_create_vector(0, 1, 0);
+	c.transform = ft_view_transform(from, to, up);
+	image = ft_render(c, w);
+	color = image.pixel[5][5];
+	printf("%f %f %f\n", color.red, color.green, color.blue);
+	return (0);
+}*/
+
+/*
+int main(void)
+{
+	t_camera	c;
+	t_ray		r;
+
+	c = ft_camera(201, 101, M_PI/2);
+	r = ft_ray_for_pixel(c, 100, 50);
+	printf("origin->   \t%f %f %f %f\n", r.origin.x, r.origin.y, r.origin.z, r.origin.w);
+	printf("direction->\t%f %f %f %f\n", r.direction.x, r.direction.y, r.direction.z, r.direction.w);
+	c = ft_camera(201, 101, M_PI/2);
+	r = ft_ray_for_pixel(c, 0, 0);
+	printf("origin->   \t%f %f %f %f\n", r.origin.x, r.origin.y, r.origin.z, r.origin.w);
+	printf("direction->\t%f %f %f %f\n", r.direction.x, r.direction.y, r.direction.z, r.direction.w);
+	c = ft_camera(201, 101, M_PI/2);
+	c.transform = ft_matrix_multiply(ft_matrix_rotation_y(M_PI/4), ft_matrix_translation(0, -2, 5));
+	r = ft_ray_for_pixel(c, 100, 50);
+	printf("origin->   \t%f %f %f %f\n", r.origin.x, r.origin.y, r.origin.z, r.origin.w);
+	printf("direction->\t%f %f %f %f\n", r.direction.x, r.direction.y, r.direction.z, r.direction.w);
+	
+	return (0);
+}*/
+
+/*
 int	main(void)
 {
 	t_matrix	m;
@@ -32,7 +172,7 @@ int	main(void)
 	}
 	
 	return (0);
-}
+}*/
 
 /*
 int	main(void)
