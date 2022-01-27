@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_materials.h                                     :+:      :+:    :+:   */
+/*   ft_shapes.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/26 12:02:12 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 19:05:26 by iibanez-         ###   ########.fr       */
+/*   Created: 2022/01/27 18:49:40 by iibanez-          #+#    #+#             */
+/*   Updated: 2022/01/27 19:23:35 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MATERIALS_H
-# define FT_MATERIALS_H
+#ifndef FT_SHAPES_H
+# define FT_SHAPES_H
 
 # include "ft_definitions.h"
-# include "ft_tuples.h"
-# include "ft_patterns.h"
-# include "ft_lights.h"
-# include <math.h>
+# include "ft_matrices.h"
 
-t_material	ft_material(void);
-t_color		ft_lighting(t_material material, t_light light, t_tuple point,
-				t_tuple eyev, t_tuple normalv, int in_shadow);
+typedef struct s_shape
+{
+	t_matrix	transform;
+}	t_shape;
+
 #endif

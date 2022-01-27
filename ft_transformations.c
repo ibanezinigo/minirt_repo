@@ -6,15 +6,15 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:04:32 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 16:08:11 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:04:34 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_transformations.h"
 
-t_matrix    ft_matrix_translation(float x, float y, float z)
+t_matrix	ft_matrix_translation(float x, float y, float z)
 {
-	t_matrix    trans;
+	t_matrix	trans;
 
 	trans = ft_matrix(4, 4);
 	trans.data[0][0] = 1;
@@ -27,9 +27,9 @@ t_matrix    ft_matrix_translation(float x, float y, float z)
 	return (trans);
 }
 
-t_matrix    ft_matrix_scaling(float x, float y, float z)
+t_matrix	ft_matrix_scaling(float x, float y, float z)
 {
-	t_matrix    trans;
+	t_matrix	trans;
 
 	trans = ft_matrix(4, 4);
 	trans.data[0][0] = x;
@@ -39,11 +39,11 @@ t_matrix    ft_matrix_scaling(float x, float y, float z)
 	return (trans);
 }
 
-t_matrix    ft_matrix_rotation_x(float x)
+t_matrix	ft_matrix_rotation_x(float x)
 {
-	t_matrix    m;
+	t_matrix	m;
 
-	m = ft_matrix(4,4);
+	m = ft_matrix(4, 4);
 	m.data[0][0] = 1;
 	m.data[3][3] = 1;
 	m.data[1][1] = cos((double)x);
@@ -53,11 +53,11 @@ t_matrix    ft_matrix_rotation_x(float x)
 	return (m);
 }
 
-t_matrix    ft_matrix_rotation_y(float y)
+t_matrix	ft_matrix_rotation_y(float y)
 {
-	t_matrix    m;
+	t_matrix	m;
 
-	m = ft_matrix(4,4);
+	m = ft_matrix(4, 4);
 	m.data[0][0] = cos((double)y);
 	m.data[0][2] = sin((double)y);
 	m.data[1][1] = 1;
@@ -67,11 +67,11 @@ t_matrix    ft_matrix_rotation_y(float y)
 	return (m);
 }
 
-t_matrix    ft_matrix_rotation_z(float z)
+t_matrix	ft_matrix_rotation_z(float z)
 {
-	t_matrix    m;
+	t_matrix	m;
 
-	m = ft_matrix(4,4);
+	m = ft_matrix(4, 4);
 	m.data[0][0] = cos((double)z);
 	m.data[0][1] = sin((double)z) * -1;
 	m.data[1][0] = sin((double)z);
@@ -81,9 +81,9 @@ t_matrix    ft_matrix_rotation_z(float z)
 	return (m);
 }
 
-t_matrix    ft_shearing(t_tuple x, t_tuple y, t_tuple z)
+t_matrix	ft_shearing(t_tuple x, t_tuple y, t_tuple z)
 {
-	t_matrix    m;
+	t_matrix	m;
 
 	m = ft_matrix(4, 4);
 	m.data[0][0] = 1;
@@ -96,18 +96,16 @@ t_matrix    ft_shearing(t_tuple x, t_tuple y, t_tuple z)
 	m.data[2][1] = z.y;
 	m.data[2][2] = 1;
 	m.data[3][3] = 1;
-
 	return (m);
 }
 
-#include <stdio.h>
-t_tuple ft_multiply_matrix_tuple(t_matrix m, t_tuple t)
+t_tuple	ft_multiply_matrix_tuple(t_matrix m, t_tuple t)
 {
-	t_tuple     result;
-	t_matrix    origin;
-	t_matrix    neworigin;
+	t_tuple		result;
+	t_matrix	origin;
+	t_matrix	neworigin;
 
-	origin = ft_matrix(4,1);
+	origin = ft_matrix(4, 1);
 	origin.data[0][0] = t.x;
 	origin.data[1][0] = t.y;
 	origin.data[2][0] = t.z;

@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_materials.h                                     :+:      :+:    :+:   */
+/*   ft_shapes.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/26 12:02:12 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 19:05:26 by iibanez-         ###   ########.fr       */
+/*   Created: 2022/01/27 18:50:12 by iibanez-          #+#    #+#             */
+/*   Updated: 2022/01/27 19:28:47 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MATERIALS_H
-# define FT_MATERIALS_H
+#include "ft_shapes.h"
 
-# include "ft_definitions.h"
-# include "ft_tuples.h"
-# include "ft_patterns.h"
-# include "ft_lights.h"
-# include <math.h>
+t_shape	ft_test_shape(void)
+{
+	t_shape	shape;
 
-t_material	ft_material(void);
-t_color		ft_lighting(t_material material, t_light light, t_tuple point,
-				t_tuple eyev, t_tuple normalv, int in_shadow);
-#endif
+	shape.transform = ft_identity_matrix();
+	return (shape);
+}

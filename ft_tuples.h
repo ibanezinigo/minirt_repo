@@ -1,9 +1,20 @@
-#ifndef FT_TUPLE_H
-# define FT_TUPLE_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_tuples.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/27 19:36:29 by iibanez-          #+#    #+#             */
+/*   Updated: 2022/01/27 19:47:10 by iibanez-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "ft_definitions.h"
-#include "math.h"
+#ifndef FT_TUPLES_H
+# define FT_TUPLES_H
 
+# include "ft_definitions.h"
+# include "math.h"
 
 t_tuple	ft_create_vector(float x, float y, float z);
 t_tuple	ft_create_point(float x, float y, float z);

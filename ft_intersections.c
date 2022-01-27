@@ -6,21 +6,21 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 11:55:18 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 18:27:33 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:20:31 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_intersections.h"
 
-t_intersections ft_intersect(t_sphere s, t_ray r)
+t_intersections	ft_intersect(t_sphere s, t_ray r)
 {
-	t_intersections inter;
-	t_tuple         sph_to_ray;
-	float           a;
-	float           b;
-	float           c;
-	float           discrimininant;
-	t_ray           nr;
+	t_intersections	inter;
+	t_tuple			sph_to_ray;
+	float			a;
+	float			b;
+	float			c;
+	float			discrimininant;
+	t_ray			nr;
 
 	nr = ft_ray_transform(r, ft_inverse(s.transform));
 	sph_to_ray = ft_subtract_tuples(nr.origin, s.origin);
@@ -46,19 +46,19 @@ t_intersections ft_intersect(t_sphere s, t_ray r)
 	}
 }
 
-t_intersection  ft_intersection(float t, t_sphere s)
+t_intersection	ft_intersection(float t, t_sphere s)
 {
-	t_intersection  i;
+	t_intersection	i;
 
 	i.t = t;
 	i.object = s;
 	return (i);
 }
 
-t_intersections ft_intersections(t_intersections base, t_intersection inter)
+t_intersections	ft_intersections(t_intersections base, t_intersection inter)
 {
-	t_intersections intersections;
-	int             i; 
+	t_intersections	intersections;
+	int				i;
 
 	intersections.count = base.count + 1;
 	intersections.xs = malloc(sizeof(t_intersection) * intersections.count);
@@ -106,7 +106,7 @@ t_intersection	ft_hit(t_intersections inter)
 
 t_intersections	ft_add_intersections(t_intersections dest, t_intersections new)
 {
-	t_intersections result;
+	t_intersections	result;
 	int				i;
 	int				saved;
 
@@ -150,6 +150,7 @@ t_comps	ft_prepare_computations(t_intersection inter, t_ray ray)
 	}
 	else
 		comp.inside = 0;
-	comp.over_point = ft_add_tuples(comp.point, ft_multiply_tuple(comp.normalv, 0.001));
+	comp.over_point = ft_add_tuples(comp.point,
+			ft_multiply_tuple(comp.normalv, 0.001));
 	return (comp);
 }

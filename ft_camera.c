@@ -6,22 +6,22 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:03:27 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 18:08:16 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:45:12 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_camera.h"
 
-t_camera ft_camera(int  h, int v, float field)
+t_camera	ft_camera(int h, int v, float field)
 {
-	t_camera    cam;
-	float       aspect;
-	float       half_view;
+	t_camera	cam;
+	float		aspect;
+	float		half_view;
 
 	cam.hsize = h;
 	cam.vsize = v;
 	cam.field_of_view = field;
-	cam.transform = ft_matrix(4,4);
+	cam.transform = ft_matrix(4, 4);
 	cam.transform.data[0][0] = 1;
 	cam.transform.data[1][1] = 1;
 	cam.transform.data[2][2] = 1;
@@ -57,8 +57,10 @@ t_ray	ft_ray_for_pixel(t_camera cam, float px, float py)
 	yoffset = (py + 0.5) * cam.pixel_size;
 	world_x = cam.half_width - xoffset;
 	world_y = cam.half_height - yoffset;
-	pixel = ft_multiply_matrix_tuple(ft_inverse(cam.transform), ft_create_point(world_x, world_y, -1));
-	origin = ft_multiply_matrix_tuple(ft_inverse(cam.transform), ft_create_point(0, 0, 0));
+	pixel = ft_multiply_matrix_tuple(ft_inverse(cam.transform),
+			ft_create_point(world_x, world_y, -1));
+	origin = ft_multiply_matrix_tuple(ft_inverse(cam.transform),
+			ft_create_point(0, 0, 0));
 	direction = ft_tuple_normalize(ft_subtract_tuples(pixel, origin));
 	return (ft_ray(origin, direction));
 }

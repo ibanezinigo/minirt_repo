@@ -1,0 +1,688 @@
+ft_canvas.h: Error!
+Error: INVALID_HEADER       (line:   1, col:   1):	Missing or invalid 42 header
+Error: PREPROC_BAD_INDENT   (line:   4, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:   6, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:   7, col:   1):	Bad preprocessor indentation
+Error: CONSECUTIVE_NEWLINES (line:   9, col:   1):	Consecutive newlines
+Error: CONSECUTIVE_NEWLINES (line:  10, col:   1):	Consecutive newlines
+ft_rays.h: Error!
+Error: PREPROC_BAD_INDENT   (line:  15, col:   1):	Bad preprocessor indentation
+Error: CONSECUTIVE_NEWLINES (line:  18, col:   1):	Consecutive newlines
+Error: CONSECUTIVE_NEWLINES (line:  19, col:   1):	Consecutive newlines
+ft_lights.c: Error!
+Error: BRACE_SHOULD_EOL     (line:  22, col:   1):	Expected newline after brace
+ft_matrices.c: Error!
+Error: CONSECUTIVE_SPC      (line:  16, col:   9):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  16, col:  12):	space before function name
+Error: CONSECUTIVE_SPC      (line:  18, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  18, col:  13):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  19, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  19, col:  11):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  20, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  20, col:  11):	Found space when expecting tab
+Error: NO_ARGS_VOID         (line:  40, col:  32):	Empty function argument requires void
+Error: CONSECUTIVE_SPC      (line:  52, col:   5):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  52, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  54, col:   8):	Found space when expecting tab
+Error: SPACE_BEFORE_FUNC    (line:  65, col:   4):	space before function name
+Error: CONSECUTIVE_SPC      (line:  67, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  67, col:  11):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  68, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  68, col:  11):	Found space when expecting tab
+Error: SPACE_BEFORE_FUNC    (line:  87, col:   9):	space before function name
+Error: CONSECUTIVE_SPC      (line:  89, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  89, col:  13):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  90, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  90, col:  11):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  91, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  91, col:  11):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  92, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  92, col:  11):	Found space when expecting tab
+Error: TOO_MANY_FUNCS       (line: 115, col:   1):	Too many functions in file
+Error: CONSECUTIVE_SPC      (line: 115, col:   9):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line: 115, col:  12):	space before function name
+Error: CONSECUTIVE_SPC      (line: 117, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 117, col:  13):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 118, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 118, col:  11):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 119, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 119, col:  11):	Found space when expecting tab
+Error: TOO_MANY_FUNCS       (line: 136, col:   1):	Too many functions in file
+Error: CONSECUTIVE_SPC      (line: 136, col:   9):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line: 136, col:  12):	space before function name
+Error: CONSECUTIVE_SPC      (line: 138, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 138, col:  13):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 139, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 139, col:  11):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 140, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 140, col:  11):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 141, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 141, col:  11):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 142, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 142, col:  11):	Found space when expecting tab
+Error: TOO_MANY_LINES       (line: 166, col:   1):	Function has more than 25 lines
+Error: CONSECUTIVE_NEWLINES (line: 168, col:   1):	Consecutive newlines
+Error: TOO_MANY_FUNCS       (line: 169, col:   1):	Too many functions in file
+Error: CONSECUTIVE_SPC      (line: 169, col:   6):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line: 169, col:   8):	space before function name
+Error: CONSECUTIVE_SPC      (line: 171, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 171, col:  13):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 172, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 172, col:  10):	Found space when expecting tab
+Error: WRONG_SCOPE_COMMENT  (line: 175, col:   5):	Comment is invalid in this scope
+Error: TOO_MANY_FUNCS       (line: 181, col:   1):	Too many functions in file
+Error: CONSECUTIVE_SPC      (line: 181, col:   6):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line: 181, col:   8):	space before function name
+Error: CONSECUTIVE_SPC      (line: 183, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 183, col:  10):	Found space when expecting tab
+Error: TOO_MANY_FUNCS       (line: 193, col:   1):	Too many functions in file
+Error: CONSECUTIVE_SPC      (line: 193, col:   6):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line: 193, col:   8):	space before function name
+Error: CONSECUTIVE_SPC      (line: 195, col:   8):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 195, col:   8):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 196, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 196, col:  10):	Found space when expecting tab
+Error: TOO_MANY_FUNCS       (line: 213, col:   1):	Too many functions in file
+Error: CONSECUTIVE_SPC      (line: 213, col:   9):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line: 213, col:  12):	space before function name
+Error: CONSECUTIVE_SPC      (line: 215, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 215, col:  10):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 216, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 216, col:  13):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 217, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 217, col:  11):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 218, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 218, col:  11):	Found space when expecting tab
+Error: WRONG_SCOPE_COMMENT  (line: 228, col:  13):	Comment is invalid in this scope
+ft_tuples.h: Error!
+Error: HEADER_PROT_NAME     (line:   1, col:   1):	Wrong header protection name
+Error: INVALID_HEADER       (line:   1, col:   1):	Missing or invalid 42 header
+Error: HEADER_PROT_ALL_2    (line:   2, col:   1):	ERROR NOT FOUND
+Error: HEADER_PROT_ALL_2    (line:   3, col:   1):	ERROR NOT FOUND
+Error: PREPROC_BAD_INDENT   (line:   4, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:   5, col:   1):	Bad preprocessor indentation
+Error: CONSECUTIVE_NEWLINES (line:   7, col:   1):	Consecutive newlines
+Error: HEADER_PROT_ALL      (line:   8, col:   1):	Header protection must include all the instructions
+Error: HEADER_PROT_ALL      (line:   9, col:   1):	Header protection must include all the instructions
+Error: HEADER_PROT_ALL      (line:  10, col:   1):	Header protection must include all the instructions
+Error: HEADER_PROT_ALL      (line:  11, col:   1):	Header protection must include all the instructions
+Error: HEADER_PROT_ALL      (line:  12, col:   1):	Header protection must include all the instructions
+Error: HEADER_PROT_ALL      (line:  13, col:   1):	Header protection must include all the instructions
+Error: HEADER_PROT_ALL      (line:  14, col:   1):	Header protection must include all the instructions
+Error: HEADER_PROT_ALL      (line:  15, col:   1):	Header protection must include all the instructions
+Error: HEADER_PROT_ALL      (line:  16, col:   1):	Header protection must include all the instructions
+Error: HEADER_PROT_ALL      (line:  17, col:   1):	Header protection must include all the instructions
+Error: HEADER_PROT_ALL      (line:  18, col:   1):	Header protection must include all the instructions
+Error: HEADER_PROT_ALL      (line:  19, col:   1):	Header protection must include all the instructions
+Error: HEADER_PROT_ALL      (line:  20, col:   1):	Header protection must include all the instructions
+Error: HEADER_PROT_ALL      (line:  21, col:   1):	Header protection must include all the instructions
+Error: HEADER_PROT_ALL      (line:  22, col:   1):	Header protection must include all the instructions
+Error: HEADER_PROT_ALL      (line:  23, col:   1):	Header protection must include all the instructions
+ft_world.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  15, col:   8):	space before function name
+Error: NO_ARGS_VOID         (line:  15, col:  18):	Empty function argument requires void
+Error: SPACE_REPLACE_TAB    (line:  17, col:  12):	Found space when expecting tab
+Error: SPACE_BEFORE_FUNC    (line:  26, col:   8):	space before function name
+Error: NO_ARGS_VOID         (line:  26, col:  26):	Empty function argument requires void
+Error: CONSECUTIVE_SPC      (line:  28, col:  12):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  28, col:  12):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  29, col:  12):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  29, col:  12):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  30, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  30, col:  13):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  31, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  31, col:  13):	Found space when expecting tab
+Error: SPC_AFTER_OPERATOR   (line:  33, col:  69):	missing space after operator
+Error: SPC_AFTER_OPERATOR   (line:  33, col:  71):	missing space after operator
+Error: SPACE_BEFORE_FUNC    (line:  47, col:  16):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  49, col:  20):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  50, col:  20):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  51, col:  19):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  51, col:  19):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  52, col:   8):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  52, col:   8):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  53, col:   8):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  53, col:   8):	Found space when expecting tab
+Error: EMPTY_LINE_FUNCTION  (line:  59, col:   1):	Empty line in function
+Error: SPACE_EMPTY_LINE     (line:  59, col:   1):	Space on empty line
+Error: TOO_MANY_LINES       (line:  81, col:   1):	Function has more than 25 lines
+Error: SPACE_BEFORE_FUNC    (line:  83, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  85, col:  12):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  86, col:   8):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  86, col:   8):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  87, col:   8):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  87, col:   8):	Found space when expecting tab
+Error: LINE_TOO_LONG        (line:  94, col:  82):	line too long
+Error: SPACE_BEFORE_FUNC    (line: 100, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line: 102, col:  20):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 103, col:  19):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 103, col:  19):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 104, col:  12):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 104, col:  12):	Found space when expecting tab
+Error: TOO_MANY_FUNCS       (line: 117, col:   1):	Too many functions in file
+Error: SPACE_BEFORE_FUNC    (line: 117, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line: 119, col:  12):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 120, col:   8):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 120, col:   8):	Found space when expecting tab
+Error: TOO_MANY_FUNCS       (line: 138, col:   1):	Too many functions in file
+Error: SPACE_BEFORE_FUNC    (line: 138, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line: 140, col:  12):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 141, col:   8):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 141, col:   8):	Found space when expecting tab
+Error: TOO_MANY_FUNCS       (line: 159, col:   1):	Too many functions in file
+Error: SPACE_BEFORE_FUNC    (line: 159, col:   4):	space before function name
+Error: CONSECUTIVE_SPC      (line: 161, col:  12):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 161, col:  12):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 162, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 162, col:  10):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 163, col:  12):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 163, col:  12):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 164, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 164, col:  10):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line: 165, col:  20):	Found space when expecting tab
+Error: TOO_MANY_VARS_FUNC   (line: 166, col:   1):	Too many variables declarations in a function
+Error: CONSECUTIVE_SPC      (line: 166, col:  19):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 166, col:  19):	Found space when expecting tab
+Error: BRACE_SHOULD_EOL     (line: 178, col:   1):	Expected newline after brace
+ft_patterns.c: Error!
+Error: PREPROC_BAD_INDENT   (line:  14, col:   1):	Bad preprocessor indentation
+Error: SPACE_BEFORE_FUNC    (line:  16, col:  10):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  18, col:  14):	Found space when expecting tab
+Error: SPACE_BEFORE_FUNC    (line:  30, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  32, col:  10):	Found space when expecting tab
+Error: SPC_BEFORE_NL        (line:  48, col:   6):	Space before newline
+Error: NEWLINE_PRECEDES_FUNC (line:  50, col:   1):	Functions must be separated by a newline
+Error: SPACE_BEFORE_FUNC    (line:  50, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  52, col:  12):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  53, col:  12):	Found space when expecting tab
+Error: LINE_TOO_LONG        (line:  55, col:  82):	line too long
+Error: LINE_TOO_LONG        (line:  56, col:  89):	line too long
+Error: BRACE_SHOULD_EOL     (line:  76, col:   1):	Expected newline after brace
+ft_camera.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  15, col:   9):	space before function name
+Error: CONSECUTIVE_SPC      (line:  15, col:  23):	Two or more consecutives spaces
+Error: CONSECUTIVE_SPC      (line:  17, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  17, col:  13):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  18, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  18, col:  10):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  19, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  19, col:  10):	Found space when expecting tab
+Error: SPC_AFTER_OPERATOR   (line:  24, col:  32):	missing space after operator
+Error: TOO_MANY_LINES       (line:  43, col:   1):	Function has more than 25 lines
+Error: TOO_MANY_VARS_FUNC   (line:  52, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  53, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  54, col:   1):	Too many variables declarations in a function
+Error: LINE_TOO_LONG        (line:  60, col:  88):	line too long
+Error: LINE_TOO_LONG        (line:  61, col:  82):	line too long
+Error: BRACE_SHOULD_EOL     (line:  90, col:   1):	Expected newline after brace
+ft_patterns.h: Error!
+Error: CONSECUTIVE_SPC      (line:  22, col:   8):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  22, col:   8):	Found space when expecting tab
+Error: LINE_TOO_LONG        (line:  22, col:  83):	line too long
+Error: MIXED_SPACE_TAB      (line:  23, col:   5):	Mixed spaces and tabs
+Error: CONSECUTIVE_SPC      (line:  23, col:   9):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  23, col:   9):	Found space when expecting tab
+ft_definitions.h: Error!
+Error: PREPROC_BAD_INDENT   (line:  14, col:   1):	Bad preprocessor indentation
+Error: CONSECUTIVE_SPC      (line:  20, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  20, col:  11):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  21, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  21, col:  11):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  22, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  22, col:  10):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  23, col:   2):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  27, col:  10):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  28, col:  10):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  29, col:  10):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  30, col:  10):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  31, col:   2):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  31, col:   4):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  35, col:  10):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  36, col:  10):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  37, col:  10):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  38, col:   2):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  38, col:   4):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  42, col:  12):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  42, col:  12):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  43, col:  12):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  43, col:  12):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  44, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  44, col:  13):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  45, col:   2):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  45, col:   4):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  49, col:  12):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  50, col:  12):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  51, col:   2):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  51, col:   4):	Found space when expecting tab
+Error: TAB_REPLACE_SPACE    (line:  53, col:   1):	Found tab when expecting space
+Error: SPACE_REPLACE_TAB    (line:  62, col:   2):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  64, col:  15):	Two or more consecutives spaces
+Error: MIXED_SPACE_TAB      (line:  66, col:  12):	Mixed spaces and tabs
+Error: SPACE_REPLACE_TAB    (line:  66, col:  12):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  67, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  67, col:  10):	Found space when expecting tab
+Error: MIXED_SPACE_TAB      (line:  67, col:  12):	Mixed spaces and tabs
+Error: CONSECUTIVE_SPC      (line:  70, col:   2):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  70, col:   4):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  74, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  74, col:  10):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  75, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  75, col:  13):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  76, col:   2):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  76, col:   3):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  80, col:   8):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  80, col:   8):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  81, col:  19):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  81, col:  19):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  82, col:   2):	Found space when expecting tab
+Error: MIXED_SPACE_TAB      (line:  92, col:  11):	Mixed spaces and tabs
+Error: SPACE_REPLACE_TAB    (line:  92, col:  11):	Found space when expecting tab
+Error: MIXED_SPACE_TAB      (line:  93, col:  11):	Mixed spaces and tabs
+Error: SPACE_REPLACE_TAB    (line:  93, col:  11):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  94, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  94, col:  10):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  95, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  95, col:  13):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  99, col:   2):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  99, col:   4):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 103, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 103, col:  11):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 104, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 104, col:  11):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line: 105, col:  12):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 106, col:   2):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 106, col:   4):	Found space when expecting tab
+Error: CONSECUTIVE_NEWLINES (line: 108, col:   1):	Consecutive newlines
+Error: CONSECUTIVE_SPC      (line: 109, col:  15):	Two or more consecutives spaces
+Error: CONSECUTIVE_SPC      (line: 116, col:   2):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 116, col:   4):	Found space when expecting tab
+ft_shapes.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  15, col:   8):	space before function name
+Error: NO_ARGS_VOID         (line:  15, col:  23):	Empty function argument requires void
+Error: SPACE_REPLACE_TAB    (line:  17, col:  12):	Found space when expecting tab
+Error: EMPTY_LINE_FUNCTION  (line:  20, col:   1):	Empty line in function
+Error: BRACE_SHOULD_EOL     (line:  21, col:   1):	Expected newline after brace
+ft_camera.h: Error!
+Error: INVALID_HEADER       (line:   1, col:   1):	Missing or invalid 42 header
+Error: PREPROC_BAD_INDENT   (line:   4, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:   5, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:   6, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:   7, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:   8, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:   9, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:  10, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:  11, col:   1):	Bad preprocessor indentation
+Error: CONSECUTIVE_SPC      (line:  13, col:  26):	Two or more consecutives spaces
+ft_shapes.h: Error!
+Error: PREPROC_BAD_INDENT   (line:  14, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:  16, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:  17, col:   1):	Bad preprocessor indentation
+ft_tuples.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  15, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  17, col:  12):	Found space when expecting tab
+Error: SPACE_BEFORE_FUNC    (line:  26, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  28, col:  12):	Found space when expecting tab
+Error: SPACE_BEFORE_FUNC    (line:  37, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  39, col:  12):	Found space when expecting tab
+Error: SPACE_BEFORE_FUNC    (line:  48, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  50, col:  12):	Found space when expecting tab
+Error: SPACE_BEFORE_FUNC    (line:  59, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  61, col:  12):	Found space when expecting tab
+Error: TOO_MANY_FUNCS       (line:  70, col:   1):	Too many functions in file
+Error: SPACE_BEFORE_FUNC    (line:  70, col:   8):	space before function name
+Error: TOO_MANY_FUNCS       (line:  75, col:   1):	Too many functions in file
+Error: SPACE_BEFORE_FUNC    (line:  75, col:   8):	space before function name
+Error: TOO_MANY_FUNCS       (line:  80, col:   1):	Too many functions in file
+Error: CONSECUTIVE_SPC      (line:  80, col:   6):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  80, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  82, col:  10):	Found space when expecting tab
+Error: TOO_MANY_FUNCS       (line:  93, col:   1):	Too many functions in file
+Error: SPACE_BEFORE_FUNC    (line:  93, col:   8):	space before function name
+Error: CONSECUTIVE_SPC      (line:  95, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  95, col:  10):	Found space when expecting tab
+Error: TOO_MANY_FUNCS       (line: 101, col:   1):	Too many functions in file
+Error: SPACE_BEFORE_FUNC    (line: 101, col:   6):	space before function name
+Error: SPACE_REPLACE_TAB    (line: 103, col:  10):	Found space when expecting tab
+Error: TOO_MANY_FUNCS       (line: 113, col:   1):	Too many functions in file
+Error: SPACE_BEFORE_FUNC    (line: 113, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line: 115, col:  12):	Found space when expecting tab
+Error: TOO_MANY_FUNCS       (line: 124, col:   1):	Too many functions in file
+Error: SPACE_BEFORE_FUNC    (line: 124, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line: 126, col:  12):	Found space when expecting tab
+Error: TOO_MANY_FUNCS       (line: 134, col:   1):	Too many functions in file
+Error: SPACE_BEFORE_FUNC    (line: 134, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line: 136, col:  12):	Found space when expecting tab
+Error: TOO_MANY_FUNCS       (line: 144, col:   1):	Too many functions in file
+Error: SPACE_BEFORE_FUNC    (line: 144, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line: 146, col:  12):	Found space when expecting tab
+Error: TOO_MANY_FUNCS       (line: 154, col:   1):	Too many functions in file
+Error: SPACE_BEFORE_FUNC    (line: 154, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line: 156, col:  12):	Found space when expecting tab
+Error: TOO_MANY_FUNCS       (line: 164, col:   1):	Too many functions in file
+Error: SPACE_BEFORE_FUNC    (line: 164, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line: 166, col:  12):	Found space when expecting tab
+Error: BRACE_SHOULD_EOL     (line: 172, col:   1):	Expected newline after brace
+tuples.c: Error!
+Error: INVALID_HEADER       (line:   3, col:   1):	Missing or invalid 42 header
+Error: CONSECUTIVE_NEWLINES (line:  31, col:   1):	Consecutive newlines
+Error: LINE_TOO_LONG        (line:  32, col:   1):	line too long
+Error: CONSECUTIVE_NEWLINES (line: 125, col:   1):	Consecutive newlines
+Error: TOO_MANY_VARS_FUNC   (line: 133, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line: 134, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line: 135, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line: 136, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line: 137, col:   1):	Too many variables declarations in a function
+Error: EMPTY_LINE_FUNCTION  (line: 145, col:   1):	Empty line in function
+Error: MIXED_SPACE_TAB      (line: 147, col:  26):	Mixed spaces and tabs
+Error: TAB_INSTEAD_SPC      (line: 147, col:  27):	Found tab when expecting space
+Error: TOO_MANY_TAB         (line: 148, col:   1):	Extra tabs for indent level
+Error: TOO_MANY_TAB         (line: 149, col:   1):	Extra tabs for indent level
+Error: TOO_MANY_TAB         (line: 150, col:   1):	Extra tabs for indent level
+Error: SPC_AFTER_OPERATOR   (line: 150, col:  56):	missing space after operator
+Error: SPC_AFTER_OPERATOR   (line: 150, col:  58):	missing space after operator
+Error: TOO_MANY_TAB         (line: 151, col:   1):	Extra tabs for indent level
+Error: SPC_AFTER_OPERATOR   (line: 151, col:  58):	missing space after operator
+Error: SPC_BFR_OPERATOR     (line: 151, col:  58):	missing space before operator
+Error: SPC_AFTER_OPERATOR   (line: 151, col:  61):	missing space after operator
+Error: SPC_BFR_OPERATOR     (line: 151, col:  61):	missing space before operator
+Error: TOO_MANY_TAB         (line: 152, col:   1):	Extra tabs for indent level
+Error: SPC_AFTER_OPERATOR   (line: 152, col:  58):	missing space after operator
+Error: SPC_BFR_OPERATOR     (line: 152, col:  58):	missing space before operator
+Error: CONSECUTIVE_SPC      (line: 153, col:  13):	Two or more consecutives spaces
+Error: EMPTY_LINE_FUNCTION  (line: 156, col:   1):	Empty line in function
+Error: TOO_MANY_TAB         (line: 159, col:   1):	Extra tabs for indent level
+Error: TOO_MANY_TAB         (line: 160, col:   1):	Extra tabs for indent level
+Error: TOO_MANY_TAB         (line: 161, col:   1):	Extra tabs for indent level
+Error: SPC_AFTER_OPERATOR   (line: 161, col:  56):	missing space after operator
+Error: SPC_AFTER_OPERATOR   (line: 161, col:  58):	missing space after operator
+Error: TOO_MANY_TAB         (line: 162, col:   1):	Extra tabs for indent level
+Error: SPC_AFTER_OPERATOR   (line: 162, col:  58):	missing space after operator
+Error: SPC_BFR_OPERATOR     (line: 162, col:  58):	missing space before operator
+Error: TOO_MANY_TAB         (line: 163, col:   1):	Extra tabs for indent level
+Error: SPC_AFTER_OPERATOR   (line: 163, col:  58):	missing space after operator
+Error: SPC_BFR_OPERATOR     (line: 163, col:  58):	missing space before operator
+Error: MIXED_SPACE_TAB      (line: 164, col:   9):	Mixed spaces and tabs
+Error: CONSECUTIVE_SPC      (line: 164, col:  13):	Two or more consecutives spaces
+Error: EMPTY_LINE_FUNCTION  (line: 167, col:   1):	Empty line in function
+Error: EMPTY_LINE_FUNCTION  (line: 175, col:   1):	Empty line in function
+Error: LINE_TOO_LONG        (line: 177, col:  98):	line too long
+Error: EMPTY_LINE_FUNCTION  (line: 183, col:   1):	Empty line in function
+Error: LINE_TOO_LONG        (line: 185, col:  82):	line too long
+Error: EMPTY_LINE_FUNCTION  (line: 191, col:   1):	Empty line in function
+Error: LINE_TOO_LONG        (line: 203, col:  82):	line too long
+Error: LINE_TOO_LONG        (line: 204, col:  82):	line too long
+Error: EMPTY_LINE_FUNCTION  (line: 205, col:   1):	Empty line in function
+Error: SPC_AFTER_OPERATOR   (line: 206, col:  38):	missing space after operator
+Error: SPC_BFR_OPERATOR     (line: 206, col:  38):	missing space before operator
+Error: LINE_TOO_LONG        (line: 207, col:  86):	line too long
+Error: EMPTY_LINE_FUNCTION  (line: 209, col:   1):	Empty line in function
+Error: TOO_MANY_LINES       (line: 215, col:   1):	Function has more than 25 lines
+Error: LINE_TOO_LONG        (line: 241, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 241, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 241, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 241, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 241, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 241, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 241, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 264, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 328, col:   1):	line too long
+Error: CONSECUTIVE_NEWLINES (line: 387, col:   1):	Consecutive newlines
+Error: LINE_TOO_LONG        (line: 388, col:   1):	line too long
+Error: CONSECUTIVE_NEWLINES (line: 455, col:   1):	Consecutive newlines
+Error: LINE_TOO_LONG        (line: 456, col:   1):	line too long
+Error: CONSECUTIVE_NEWLINES (line: 509, col:   1):	Consecutive newlines
+Error: CONSECUTIVE_NEWLINES (line: 510, col:   1):	Consecutive newlines
+Error: CONSECUTIVE_NEWLINES (line: 532, col:   1):	Consecutive newlines
+Error: LINE_TOO_LONG        (line: 578, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 651, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 714, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 714, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 714, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 714, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 714, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 714, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 714, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 714, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 714, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 714, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 714, col:   1):	line too long
+Error: LINE_TOO_LONG        (line: 714, col:   1):	line too long
+ft_intersections.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  15, col:  16):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  17, col:  20):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  18, col:  12):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  18, col:  12):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  19, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  19, col:  10):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  20, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  20, col:  10):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  21, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  21, col:  10):	Found space when expecting tab
+Error: TOO_MANY_VARS_FUNC   (line:  22, col:   1):	Too many variables declarations in a function
+Error: CONSECUTIVE_SPC      (line:  22, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  22, col:  10):	Found space when expecting tab
+Error: TOO_MANY_VARS_FUNC   (line:  23, col:   1):	Too many variables declarations in a function
+Error: CONSECUTIVE_SPC      (line:  23, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  23, col:  10):	Found space when expecting tab
+Error: TOO_MANY_LINES       (line:  47, col:   1):	Function has more than 25 lines
+Error: CONSECUTIVE_SPC      (line:  49, col:  15):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  49, col:  16):	space before function name
+Error: CONSECUTIVE_SPC      (line:  51, col:  19):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  51, col:  19):	Found space when expecting tab
+Error: SPACE_BEFORE_FUNC    (line:  58, col:  16):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  60, col:  20):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  61, col:   8):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  61, col:   8):	Found space when expecting tab
+Error: SPC_BEFORE_NL        (line:  61, col:  23):	Space before newline
+Error: TOO_MANY_LINES       (line: 105, col:   1):	Function has more than 25 lines
+Error: SPACE_REPLACE_TAB    (line: 109, col:  20):	Found space when expecting tab
+Error: TOO_MANY_LINES       (line: 135, col:   1):	Function has more than 25 lines
+Error: TOO_MANY_FUNCS       (line: 137, col:   1):	Too many functions in file
+Error: LINE_TOO_LONG        (line: 153, col:  86):	line too long
+Error: BRACE_SHOULD_EOL     (line: 155, col:   1):	Expected newline after brace
+ft_intersections.h: Error!
+Error: PREPROC_BAD_INDENT   (line:  16, col:   1):	Bad preprocessor indentation
+Error: SPACE_REPLACE_TAB    (line:  21, col:  16):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  22, col:  15):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  22, col:  15):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  23, col:  16):	Found space when expecting tab
+ft_world.h: Error!
+Error: PREPROC_BAD_INDENT   (line:  16, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:  17, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:  18, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:  19, col:   1):	Bad preprocessor indentation
+Error: CONSECUTIVE_NEWLINES (line:  22, col:   1):	Consecutive newlines
+Error: CONSECUTIVE_NEWLINES (line:  23, col:   1):	Consecutive newlines
+Error: MIXED_SPACE_TAB      (line:  24, col:   8):	Mixed spaces and tabs
+Error: SPACE_REPLACE_TAB    (line:  24, col:   8):	Found space when expecting tab
+Error: NO_ARGS_VOID         (line:  24, col:  26):	Empty function argument requires void
+Error: MIXED_SPACE_TAB      (line:  25, col:   8):	Mixed spaces and tabs
+Error: SPACE_REPLACE_TAB    (line:  25, col:   8):	Found space when expecting tab
+Error: NO_ARGS_VOID         (line:  25, col:  34):	Empty function argument requires void
+Error: MIXED_SPACE_TAB      (line:  27, col:   8):	Mixed spaces and tabs
+Error: SPACE_REPLACE_TAB    (line:  27, col:   8):	Found space when expecting tab
+Error: MIXED_SPACE_TAB      (line:  28, col:   8):	Mixed spaces and tabs
+Error: SPACE_REPLACE_TAB    (line:  28, col:   8):	Found space when expecting tab
+Error: MIXED_SPACE_TAB      (line:  29, col:   8):	Mixed spaces and tabs
+Error: SPACE_REPLACE_TAB    (line:  29, col:   8):	Found space when expecting tab
+Error: MIXED_SPACE_TAB      (line:  30, col:   8):	Mixed spaces and tabs
+Error: SPACE_REPLACE_TAB    (line:  30, col:   8):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  31, col:   4):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  31, col:   4):	Found space when expecting tab
+ft_materials.c: Error!
+Error: PREPROC_BAD_INDENT   (line:  13, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:  14, col:   1):	Bad preprocessor indentation
+Error: SPACE_BEFORE_FUNC    (line:  16, col:  11):	space before function name
+Error: NO_ARGS_VOID         (line:  16, col:  24):	Empty function argument requires void
+Error: INCLUDE_START_FILE   (line:  29, col:   1):	Include must be at the start of file
+Error: LINE_TOO_LONG        (line:  31, col:  84):	line too long
+Error: TOO_MANY_ARGS        (line:  31, col: 117):	Function has more than 4 arguments
+Error: TOO_MANY_VARS_FUNC   (line:  38, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  39, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  40, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  41, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  42, col:   1):	Too many variables declarations in a function
+Error: CONSECUTIVE_NEWLINES (line:  44, col:   1):	Consecutive newlines
+Error: EMPTY_LINE_FUNCTION  (line:  44, col:   1):	Empty line in function
+Error: SPACE_EMPTY_LINE     (line:  44, col:   1):	Space on empty line
+Error: TOO_MANY_TAB         (line:  63, col:   1):	Extra tabs for indent level
+Error: LINE_TOO_LONG        (line:  63, col:  82):	line too long
+Error: TOO_MANY_TAB         (line:  64, col:   1):	Extra tabs for indent level
+Error: NO_SPC_BFR_OPR       (line:  65, col:  61):	extra space before operator
+Error: NO_SPC_AFR_PAR       (line:  73, col:  26):	Extra space after parenthesis (brace/bracket)
+Error: LINE_TOO_LONG        (line:  74, col:  83):	line too long
+Error: BRACE_SHOULD_EOL     (line:  78, col:   1):	Expected newline after brace
+Error: TOO_MANY_LINES       (line:  78, col:   1):	Function has more than 25 lines
+ft_spheres.c: Error!
+Error: CONSECUTIVE_SPC      (line:  15, col:   9):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  15, col:  12):	space before function name
+Error: NO_ARGS_VOID         (line:  15, col:  30):	Empty function argument requires void
+Error: CONSECUTIVE_SPC      (line:  17, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  17, col:  13):	Found space when expecting tab
+Error: SPC_AFTER_OPERATOR   (line:  19, col:  33):	missing space after operator
+Error: SPC_AFTER_OPERATOR   (line:  19, col:  35):	missing space after operator
+Error: SPC_AFTER_OPERATOR   (line:  21, col:  42):	missing space after operator
+Error: SPC_AFTER_OPERATOR   (line:  21, col:  44):	missing space after operator
+Error: CONSECUTIVE_SPC      (line:  26, col:   9):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  26, col:  12):	space before function name
+Error: CONSECUTIVE_SPC      (line:  28, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  28, col:  13):	Found space when expecting tab
+Error: SPC_AFTER_OPERATOR   (line:  30, col:  33):	missing space after operator
+Error: SPC_AFTER_OPERATOR   (line:  30, col:  35):	missing space after operator
+Error: SPC_AFTER_OPERATOR   (line:  32, col:  63):	missing space after operator
+Error: LINE_TOO_LONG        (line:  32, col:  82):	line too long
+Error: SPC_AFTER_OPERATOR   (line:  32, col:  86):	missing space after operator
+Error: SPACE_BEFORE_FUNC    (line:  54, col:   8):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  56, col:  12):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  57, col:  12):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  58, col:  12):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  59, col:  12):	Found space when expecting tab
+Error: LINE_TOO_LONG        (line:  63, col:  87):	line too long
+Error: CONSECUTIVE_SPC      (line:  65, col:  13):	Two or more consecutives spaces
+Error: LINE_TOO_LONG        (line:  73, col:  82):	line too long
+Error: TOO_MANY_FUNCS       (line:  78, col:   1):	Too many functions in file
+Error: NL_AFTER_VAR_DECL    (line:  82, col:   1):	Variable declarations must be followed by a newline
+Error: SPC_AFTER_OPERATOR   (line:  82, col:  35):	missing space after operator
+Error: LINE_TOO_LONG        (line:  82, col:  82):	line too long
+Error: SPC_AFTER_OPERATOR   (line:  83, col:  32):	missing space after operator
+Error: LINE_TOO_LONG        (line:  83, col:  89):	line too long
+Error: BRACE_SHOULD_EOL     (line: 102, col:   1):	Expected newline after brace
+ft_spheres.h: Error!
+Error: PREPROC_BAD_INDENT   (line:  16, col:   1):	Bad preprocessor indentation
+Error: CONSECUTIVE_NEWLINES (line:  21, col:   1):	Consecutive newlines
+Error: CONSECUTIVE_NEWLINES (line:  22, col:   1):	Consecutive newlines
+Error: NO_ARGS_VOID         (line:  26, col:  30):	Empty function argument requires void
+ft_rays.c: Error!
+Error: CONSECUTIVE_SPC      (line:  15, col:   6):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  15, col:   8):	space before function name
+Error: CONSECUTIVE_SPC      (line:  17, col:  10):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  17, col:  10):	Found space when expecting tab
+Error: SPACE_BEFORE_FUNC    (line:  24, col:   8):	space before function name
+Error: BRACE_SHOULD_EOL     (line:  27, col:   1):	Expected newline after brace
+ft_canvas.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  15, col:   9):	space before function name
+Error: CONSECUTIVE_SPC      (line:  17, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  17, col:  13):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  18, col:   8):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  18, col:   8):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  19, col:   8):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  19, col:   8):	Found space when expecting tab
+Error: TOO_MANY_LINES       (line:  44, col:   1):	Function has more than 25 lines
+Error: CONSECUTIVE_SPC      (line:  46, col:   5):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  46, col:   8):	space before function name
+Error: CONSECUTIVE_SPC      (line:  63, col:   5):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  63, col:   8):	space before function name
+Error: SPC_AFTER_OPERATOR   (line:  70, col:  25):	missing space after operator
+Error: SPC_BFR_PAR          (line:  70, col:  26):	Missing space before parenthesis (brace/bracket)
+Error: NO_SPC_AFR_PAR       (line:  70, col:  30):	Extra space after parenthesis (brace/bracket)
+Error: SPC_AFTER_OPERATOR   (line:  76, col:  25):	missing space after operator
+Error: SPC_BFR_PAR          (line:  76, col:  26):	Missing space before parenthesis (brace/bracket)
+Error: NO_SPC_AFR_PAR       (line:  76, col:  30):	Extra space after parenthesis (brace/bracket)
+Error: SPC_AFTER_OPERATOR   (line:  82, col:  24):	missing space after operator
+Error: SPC_BFR_PAR          (line:  82, col:  25):	Missing space before parenthesis (brace/bracket)
+Error: NO_SPC_AFR_PAR       (line:  82, col:  29):	Extra space after parenthesis (brace/bracket)
+Error: CONSECUTIVE_SPC      (line:  85, col:   5):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  85, col:   8):	space before function name
+Error: CONSECUTIVE_SPC      (line:  87, col:   9):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  87, col:   9):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  88, col:   8):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  88, col:   8):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  89, col:   8):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  89, col:   8):	Found space when expecting tab
+Error: SPC_AFTER_OPERATOR   (line:  93, col:  14):	missing space after operator
+Error: SPC_AFTER_OPERATOR   (line:  94, col:  14):	missing space after operator
+Error: SPC_AFTER_OPERATOR   (line:  95, col:  14):	missing space after operator
+Error: BRACE_SHOULD_EOL     (line: 114, col:   1):	Expected newline after brace
+Error: TOO_MANY_LINES       (line: 114, col:   1):	Function has more than 25 lines
+ft_lights.h: Error!
+Error: PREPROC_BAD_INDENT   (line:  16, col:   1):	Bad preprocessor indentation
+Error: CONSECUTIVE_NEWLINES (line:  19, col:   1):	Consecutive newlines
+Error: CONSECUTIVE_NEWLINES (line:  20, col:   1):	Consecutive newlines
+ft_transformations.h: Error!
+Error: INVALID_HEADER       (line:   1, col:   1):	Missing or invalid 42 header
+Error: PREPROC_BAD_INDENT   (line:   4, col:   1):	Bad preprocessor indentation
+Error: CONSECUTIVE_SPC      (line:  15, col:   8):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  15, col:   8):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  16, col:   6):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  16, col:   6):	Found space when expecting tab
+ft_matrices.h: Error!
+Error: INVALID_HEADER       (line:   1, col:   1):	Missing or invalid 42 header
+Error: PREPROC_BAD_INDENT   (line:   2, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:   4, col:   1):	Bad preprocessor indentation
+Error: CONSECUTIVE_NEWLINES (line:   7, col:   1):	Consecutive newlines
+Error: CONSECUTIVE_NEWLINES (line:   8, col:   1):	Consecutive newlines
+Error: NO_ARGS_VOID         (line:  10, col:  32):	Empty function argument requires void
+ft_materials.h: Error!
+Error: PREPROC_BAD_INDENT   (line:  16, col:   1):	Bad preprocessor indentation
+Error: CONSECUTIVE_NEWLINES (line:  20, col:   1):	Consecutive newlines
+Error: CONSECUTIVE_NEWLINES (line:  21, col:   1):	Consecutive newlines
+Error: CONSECUTIVE_SPC      (line:  25, col:  11):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  25, col:  11):	Found space when expecting tab
+Error: NO_ARGS_VOID         (line:  25, col:  25):	Empty function argument requires void
+Error: LINE_TOO_LONG        (line:  26, col:  84):	line too long
+Error: TOO_MANY_ARGS        (line:  26, col: 117):	Function has more than 4 arguments
+ft_transformations.c: Error!
+Error: CONSECUTIVE_SPC      (line:  15, col:   9):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  15, col:  12):	space before function name
+Error: CONSECUTIVE_SPC      (line:  17, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  17, col:  13):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  30, col:   9):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  30, col:  12):	space before function name
+Error: CONSECUTIVE_SPC      (line:  32, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  32, col:  13):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  42, col:   9):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  42, col:  12):	space before function name
+Error: CONSECUTIVE_SPC      (line:  44, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  44, col:  13):	Found space when expecting tab
+Error: SPC_AFTER_OPERATOR   (line:  46, col:  20):	missing space after operator
+Error: CONSECUTIVE_SPC      (line:  56, col:   9):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  56, col:  12):	space before function name
+Error: CONSECUTIVE_SPC      (line:  58, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  58, col:  13):	Found space when expecting tab
+Error: SPC_AFTER_OPERATOR   (line:  60, col:  20):	missing space after operator
+Error: CONSECUTIVE_SPC      (line:  70, col:   9):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  70, col:  12):	space before function name
+Error: CONSECUTIVE_SPC      (line:  72, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  72, col:  13):	Found space when expecting tab
+Error: SPC_AFTER_OPERATOR   (line:  74, col:  20):	missing space after operator
+Error: TOO_MANY_FUNCS       (line:  84, col:   1):	Too many functions in file
+Error: CONSECUTIVE_SPC      (line:  84, col:   9):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  84, col:  12):	space before function name
+Error: CONSECUTIVE_SPC      (line:  86, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  86, col:  13):	Found space when expecting tab
+Error: EMPTY_LINE_FUNCTION  (line:  99, col:   1):	Empty line in function
+Error: INCLUDE_START_FILE   (line: 103, col:   1):	Include must be at the start of file
+Error: NL_AFTER_PREPROC     (line: 104, col:   1):	Preprocessor statement must be followed by a newline
+Error: TOO_MANY_FUNCS       (line: 104, col:   1):	Too many functions in file
+Error: SPACE_BEFORE_FUNC    (line: 104, col:   8):	space before function name
+Error: CONSECUTIVE_SPC      (line: 106, col:  12):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 106, col:  12):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 107, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 107, col:  13):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 108, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line: 108, col:  13):	Found space when expecting tab
+Error: SPC_AFTER_OPERATOR   (line: 110, col:  25):	missing space after operator
+Error: TOO_MANY_FUNCS       (line: 125, col:   1):	Too many functions in file
+Error: TOO_MANY_FUNCS       (line: 134, col:   1):	Too many functions in file
+Error: TOO_MANY_VARS_FUNC   (line: 141, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_LINES       (line: 168, col:   1):	Function has more than 25 lines

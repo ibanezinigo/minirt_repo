@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 12:26:31 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 16:19:19 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:50:01 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 
 t_pattern	ft_stripe_pattern(t_color a, t_color b);
 t_color		ft_stripe_at(t_pattern p, t_tuple point);
-t_color     ft_stripe_at_object(t_pattern pattern, t_sphere s, t_tuple world_point);
-void	    ft_set_pattern_transform(t_pattern s, t_matrix translation);
+t_color		ft_stripe_at_object(t_pattern pattern, t_sphere s,
+                    	t_tuple world_point);
+void		ft_set_pattern_transform(t_pattern s, t_matrix translation);
 
 #endif

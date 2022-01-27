@@ -6,22 +6,22 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 11:50:50 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 16:07:56 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:09:24 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rays.h"
 
-t_ray   ft_ray(t_tuple origin, t_tuple direction)
+t_ray	ft_ray(t_tuple origin, t_tuple direction)
 {
-	t_ray   ray;
+	t_ray	ray;
 
 	ray.origin = origin;
 	ray.direction = direction;
 	return (ray);
 }
 
-t_tuple ft_ray_position(t_ray ray, float t)
+t_tuple	ft_ray_position(t_ray ray, float t)
 {
 	return (ft_add_tuples(ray.origin, ft_multiply_tuple(ray.direction, t)));
 }
