@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 15:54:51 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 19:51:08 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:56:40 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef struct s_matrix
 {
 	size_t	rows;
 	size_t	cols;
-	float	**data;
+	float	data[4][4];
 }	t_matrix;
 
 typedef struct s_tuple

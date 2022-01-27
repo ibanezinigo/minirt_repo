@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:04:32 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 19:04:34 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/27 20:14:05 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,12 +111,10 @@ t_tuple	ft_multiply_matrix_tuple(t_matrix m, t_tuple t)
 	origin.data[2][0] = t.z;
 	origin.data[3][0] = t.w;
 	neworigin = ft_matrix_multiply(m, origin);
-	result.x = neworigin.data[0][0];
-	result.y = neworigin.data[1][0];
-	result.z = neworigin.data[2][0];
-	result.w = neworigin.data[3][0];
-	ft_matrix_free_data(origin);
-	ft_matrix_free_data(neworigin);
+	result.x = m.data[0][0] * t.x + m.data[0][1] * t.y + m.data[0][2] * t.z + m.data[0][3] * t.w;
+	result.y = m.data[1][0] * t.x + m.data[1][1] * t.y + m.data[1][2] * t.z + m.data[1][3] * t.w;
+	result.z = m.data[2][0] * t.x + m.data[2][1] * t.y + m.data[2][2] * t.z + m.data[2][3] * t.w;
+	result.w = m.data[3][0] * t.x + m.data[3][1] * t.y + m.data[3][2] * t.z + m.data[3][3] * t.w;
 	return (result);
 }
 
@@ -160,7 +158,5 @@ t_matrix	ft_view_transform(t_tuple from, t_tuple to, t_tuple up)
 	orientation.data[3][3] = 1;
 	translation = ft_matrix_translation(from.x * -1, from.y * -1, from.z * -1);
 	result = ft_matrix_multiply(orientation, translation);
-	ft_matrix_free_data(orientation);
-	ft_matrix_free_data(translation);
 	return (result);
 }

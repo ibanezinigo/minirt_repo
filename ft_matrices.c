@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:04:04 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 19:50:21 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:58:41 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ t_matrix	ft_matrix(size_t r, size_t c)
 
 	m.rows = r;
 	m.cols = c;
-	m.data = malloc(sizeof(float *) * m.rows);
 	i = 0;
 	while (i < m.rows)
 	{
-		m.data[i] = malloc(sizeof(float) * m.cols);
 		j = 0;
 		while (j < m.cols)
 		{
@@ -47,19 +45,6 @@ t_matrix	ft_identity_matrix(void)
 	m.data[2][2] = 1;
 	m.data[3][3] = 1;
 	return (m);
-}
-
-void	ft_matrix_free_data(t_matrix m)
-{
-	int	i;
-
-	i = 0;
-	while (i < m.rows)
-	{
-		free(m.data[i]);
-		i++;
-	}
-	free(m.data);
 }
 
 int	ft_matrix_equals(t_matrix m1, t_matrix m2)
@@ -172,7 +157,6 @@ float	ft_minor(t_matrix m, size_t row, size_t col)
 
 	matrix = ft_submatrix(m, row, col);
 	result = ft_determinant(matrix);
-	ft_matrix_free_data(matrix);
 	return (result);
 }
 

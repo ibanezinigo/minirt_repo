@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:05:46 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 19:06:07 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:57:14 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 t_matrix	ft_matrix(size_t r, size_t c);
 t_matrix	ft_identity_matrix(void);
-void		ft_matrix_free_data(t_matrix m);
 int			ft_matrix_equals(t_matrix m1, t_matrix m2);
 t_matrix	ft_matrix_multiply(t_matrix m1, t_matrix m2);
 t_matrix	ft_matrix_transpose(t_matrix m);
