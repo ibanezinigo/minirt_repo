@@ -1,22 +1,8 @@
 #ifndef FT_TUPLE_H
 # define FT_TUPLE_H
 
+#include "ft_definitions.h"
 #include "math.h"
-
-typedef struct s_tuple
-{
-	float x;
-	float y;
-	float z;
-	float w;
-}   t_tuple;
-
-typedef struct s_color
-{
-	float red;
-	float green;
-	float blue;
-}   t_color;
 
 
 t_tuple	ft_create_vector(float x, float y, float z);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_camera.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/27 16:03:27 by iibanez-          #+#    #+#             */
+/*   Updated: 2022/01/27 18:08:16 by iibanez-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_camera.h"
 
 t_camera ft_camera(int  h, int v, float field)
@@ -69,7 +81,6 @@ t_canvas	ft_render(t_camera camera, t_world world)
 		{
 			ray = ft_ray_for_pixel(camera, x, y);
 			color = ft_color_at(world, ray);
-			//printf("y-> %zu x-> %zu %f %f %f\n", y, x, color.red, color.green, color.blue);
 			ft_write_pixel(image, x, y, color);
 			x++;
 		}

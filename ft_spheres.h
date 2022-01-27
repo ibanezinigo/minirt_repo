@@ -6,26 +6,22 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 11:51:59 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/26 18:14:24 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/27 16:09:21 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SPHERES_H
 # define FT_SPHERES_H
 
-#include "ft_matrices.h"
-#include "ft_tuples.h"
-#include "ft_transformations.h"
-#include "ft_materials.h"
-#include <stdio.h>
+#include "ft_definitions.h"
+# include "ft_materials.h"
+# include "ft_matrices.h"
+# include "ft_tuples.h"
 
-typedef struct  s_sphere
-{
-	t_tuple 	origin;
-	float   	radius;
-	t_matrix	transform;
-	t_material	material;
-}   t_sphere;
+
+
+# include <stdio.h>
+# include "ft_transformations.h"
 
 t_sphere	ft_create_sphere();
 t_sphere	ft_create_sphere_translated(t_matrix translation);

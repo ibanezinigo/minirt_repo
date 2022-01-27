@@ -12,6 +12,116 @@
 #include "ft_tuples.h"
 #include "ft_world.h"
 #include "ft_camera.h"
+#include "ft_patterns.h"
+
+/*
+int	main(void)
+{
+	t_ray r = ft_ray(ft_create_point(0,0,-5), ft_create_vector(0,0,1));
+	t_sphere shape = ft_create_sphere();
+	ft_set_transform(shape, ft_matrix_translation(0,0,1));
+	t_intersection i = ft_intersection(5, shape);
+	t_comps comps = ft_prepare_computations(i, r);
+	printf("%f < %f\n", comps.over_point.z, 0.00001 * -1 /2);
+	printf("%f > %f\n", comps.point.z, comps.over_point.z);
+
+	return (0);
+}*/
+
+
+/*
+int	main(void)
+{
+	t_world w = ft_world();
+	w = ft_world_add_light(w, ft_point_light(ft_create_point(0,0,-10), ft_color(1,1,1)));
+	t_sphere s1 = ft_create_sphere();
+	w = ft_world_add_sphere(w, s1);
+	t_sphere s2 = ft_create_sphere();
+	ft_set_transform(s2, ft_matrix_translation(0,0,10));
+	w = ft_world_add_sphere(w, s2);
+	t_ray r = ft_ray(ft_create_point(0,0,5), ft_create_vector(0,0,1));
+	t_intersection i = ft_intersection(4, s2);
+	t_comps comps = ft_prepare_computations(i, r);
+	t_color c = ft_shade_hit(w, comps);
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+
+	return (0);
+}*/
+
+/*
+int	main(void)
+{
+	t_world	w = ft_default_world();
+	t_tuple	p = ft_create_point(0, 10, 0);
+
+	printf("%i\n", ft_is_shadowed(w, p));
+	return (0);
+}*/
+
+/*
+int	main(void)
+{
+	t_tuple	eyev = ft_create_vector(0,0,-1);
+	t_tuple	normalv = ft_create_vector(0,0,-1);
+	t_light	light = ft_point_light(ft_create_point(0,0,-10), ft_color(1,1,1));
+	int		in_shadow = 1;
+	t_color	c;
+	t_material	m;
+	t_tuple		position;
+
+	m = ft_material();
+	position = ft_create_point(0,0,0);
+	c = ft_lighting(m, light, position, eyev, normalv, in_shadow);
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+
+	return (0);
+}*/
+
+/*
+int	main(void)
+{
+	t_material	m;
+	t_tuple		eyev;
+	t_tuple		normalv;
+	t_light		light;
+	t_color		c1;
+	t_color		c2;
+
+	m.pattern = ft_stripe_pattern(ft_color(1, 1, 1), ft_color(0,0,0));
+	m.ambient = 1;
+	m.diffuse = 0;
+	m.specular = 0;
+	m.has_pattern = 1;
+	eyev = ft_create_vector(0, 0, -1);
+	normalv = ft_create_vector(0, 0, -1);
+	light = ft_point_light(ft_create_point(0,0,-10), ft_color(1,1,1));
+	c1 = ft_lighting(m, light, ft_create_point(0.9, 0, 0), eyev, normalv);
+	c2 = ft_lighting(m, light, ft_create_point(1.1, 0, 0), eyev, normalv);
+	printf("%f %f %f\n", c1.red, c1.green, c1.blue);
+	printf("%f %f %f\n", c2.red, c2.green, c2.blue);
+}*/
+
+/*
+int	main(void)
+{
+	t_pattern	pattern;
+	t_color		c;
+
+	pattern = ft_stripe_pattern(ft_color(1,1,1), ft_color(0,0,0));
+	c = ft_stripe_at(pattern, ft_create_point(0,0,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_stripe_at(pattern, ft_create_point(0.9,0,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_stripe_at(pattern, ft_create_point(1,0,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_stripe_at(pattern, ft_create_point(-0.1,0,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_stripe_at(pattern, ft_create_point(-1,0,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_stripe_at(pattern, ft_create_point(-1.1,0,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+}*/
+
 
 int	main(void)
 {
@@ -93,7 +203,7 @@ int	main(void)
 	printf("%f %f %f %f\n", world.lights[0].position.x, world.lights[0].position.y, world.lights[0].position.z, world.lights[0].position.w);
 	printf("%f %f %f\n", world.lights[0].intensity.red, world.lights[0].intensity.green, world.lights[0].intensity.blue);
 
-	camera = ft_camera(1000, 500, M_PI/3);
+	camera = ft_camera(600, 300, M_PI/3);
 	camera.transform = ft_view_transform(ft_create_point(0, 1.5, -5), ft_create_point(0, 1, 0), ft_create_vector(0, 1, 0));
 	printf("camera\n");
 

@@ -1,14 +1,10 @@
 #ifndef FT_MATRICES_H
 #define FT_MATRICES_H
 
+#include "ft_definitions.h"
 # include <stdlib.h>
 
-typedef struct s_matrix
-{
-	size_t  rows;
-	size_t  cols;
-	float   **data;
-} t_matrix;
+
 
 t_matrix	ft_matrix(size_t r, size_t c);
 void		ft_matrix_free_data(t_matrix m);

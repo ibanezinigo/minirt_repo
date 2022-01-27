@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 11:55:18 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/26 19:06:07 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/27 18:27:33 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,11 @@ t_intersection	ft_hit(t_intersections inter)
 		}
 		i++;
 	}
+	if (minpos == -1)
+	{
+		nul.t = -1;
+		return (nul);
+	}
 	return (inter.xs[minpos]);
 }
 
@@ -145,5 +150,6 @@ t_comps	ft_prepare_computations(t_intersection inter, t_ray ray)
 	}
 	else
 		comp.inside = 0;
+	comp.over_point = ft_add_tuples(comp.point, ft_multiply_tuple(comp.normalv, 0.001));
 	return (comp);
 }

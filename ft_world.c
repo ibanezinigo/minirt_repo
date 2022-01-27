@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:36:01 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/26 19:54:59 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/27 18:01:33 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,15 @@ t_intersections ft_intersect_world(t_world world, t_ray ray)
 t_color ft_shade_hit(t_world w, t_comps c)
 {
     t_color result;
+    int     is_shadowed;
     int     i;
 
     result = ft_color(0, 0, 0);
     i = 0;
     while (i < w.n_lights)
     {
-        result = ft_color_add(result, ft_lighting(c.object.material, w.lights[i], c.point, c.eyev, c.normalv));
+        is_shadowed = ft_is_shadowed(w, c.over_point);
+        result = ft_color_add(result, ft_lighting(c.object.material, w.lights[i], c.over_point, c.eyev, c.normalv, is_shadowed));
         i++;
     }
     return (result);
@@ -111,9 +113,6 @@ t_color ft_color_at(t_world w, t_ray r)
         return (ft_shade_hit(w, c));
     }
 }
-
-
-
 
 t_world ft_world_add_light(t_world world, t_light newlight)
 {
@@ -155,4 +154,25 @@ t_world ft_world_add_sphere(t_world world, t_sphere sphere)
     if (world.n_spheres > 0)
         free(world.spheres);
     return (newworld);
+}
+
+int ft_is_shadowed(t_world world, t_tuple point)
+{
+    t_tuple         v;
+    float           distance;
+    t_tuple         direction;
+    t_ray           ray;
+    t_intersections intersections;
+    t_intersection  hit;
+
+    v = ft_subtract_tuples(world.lights[0].position, point);
+    distance = ft_tuple_magnitude(v);
+    direction = ft_tuple_normalize(v);
+    ray = ft_ray(point, direction);
+    intersections = ft_intersect_world(world, ray);
+    hit = ft_hit(intersections);
+    if (hit.t != -1 && hit.t < distance)
+        return (1);
+    else
+        return (0);
 }

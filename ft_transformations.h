@@ -1,6 +1,7 @@
 #ifndef FT_TRANSFORMATIONS_H
 # define FT_TRANSFORMATIONS_H
 
+#include "ft_definitions.h"
 # include "ft_matrices.h"
 # include "ft_tuples.h"
 # include "ft_rays.h"
