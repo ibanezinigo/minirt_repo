@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:05:46 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 19:57:14 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/28 13:06:56 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "ft_definitions.h"
 # include <stdlib.h>
+# include <stdio.h>
 
 t_matrix	ft_matrix(size_t r, size_t c);
 t_matrix	ft_identity_matrix(void);
@@ -26,5 +27,6 @@ float		ft_minor(t_matrix m, size_t row, size_t col);
 float		ft_cofactor(t_matrix m, size_t row, size_t col);
 float		ft_determinant(t_matrix m);
 t_matrix	ft_inverse(t_matrix m);
+void		ft_print_matrix(t_matrix m);
 
 #endif

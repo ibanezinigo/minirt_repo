@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:36:01 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 19:46:05 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/28 16:43:39 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ t_world	ft_default_world(void)
 {
 	t_world		w;
 	t_light		ligth;
-	t_sphere	s1;
-	t_sphere	s2;
+	t_shape		s1;
+	t_shape		s2;
 
 	ligth = ft_point_light(ft_create_point(-10, 10, -10), ft_color(1, 1, 1));
 	s1 = ft_create_sphere();
@@ -56,7 +56,7 @@ t_intersections	ft_intersect_world(t_world world, t_ray ray)
 	i = 0;
 	while (i < world.n_spheres)
 	{
-		tmp = ft_sphere_intersect(world.spheres[i], ray);
+		tmp = ft_intersect(&world.spheres[i], ray);
 		xs = ft_add_intersections(xs, tmp);
 		i++;
 	}
@@ -144,7 +144,7 @@ t_world	ft_world_add_sphere(t_world world, t_shape sphere)
 	newworld.lights = world.lights;
 	newworld.n_spheres = world.n_spheres + 1;
 	i = 0;
-	newworld.spheres = malloc(sizeof(t_sphere) * newworld.n_spheres);
+	newworld.spheres = malloc(sizeof(t_shape) * newworld.n_spheres);
 	while (i < world.n_spheres)
 	{
 		newworld.spheres[i] = world.spheres[i];

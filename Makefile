@@ -12,6 +12,7 @@ LIGHTS = ft_lights
 MATERIALS = ft_materials
 MATRICES = ft_matrices
 PATTERNS = ft_patterns
+PLANES = ft_planes
 RAYS = ft_rays
 SHAPES = ft_shapes
 SPHERES = ft_spheres
@@ -27,6 +28,7 @@ SRC = $(addsuffix .c, $(addprefix main/, $(MAIN))) \
 	  $(addsuffix .c, $(addprefix materials/, $(MATERIALS))) \
 	  $(addsuffix .c, $(addprefix matrices/, $(MATRICES))) \
 	  $(addsuffix .c, $(addprefix patterns/, $(PATTERNS))) \
+	  $(addsuffix .c, $(addprefix planes/, $(PLANES))) \
 	  $(addsuffix .c, $(addprefix rays/, $(RAYS))) \
 	  $(addsuffix .c, $(addprefix shapes/, $(SHAPES))) \
 	  $(addsuffix .c, $(addprefix spheres/, $(SPHERES))) \

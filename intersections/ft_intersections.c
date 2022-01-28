@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 11:55:18 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 19:20:31 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/28 15:54:51 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,10 @@ t_intersections	ft_sphere_intersect(t_shape s, t_ray r)
 	float			b;
 	float			c;
 	float			discrimininant;
-	t_ray			nr;
 
-	nr = ft_ray_transform(r, ft_inverse(s.transform));
-	sph_to_ray = ft_subtract_tuples(nr.origin, ft_create_point(0, 0, 0));
-	a = ft_tuple_dot(nr.direction, nr.direction);
-	b = 2 * ft_tuple_dot(nr.direction, sph_to_ray);
+	sph_to_ray = ft_subtract_tuples(r.origin, ft_create_point(0, 0, 0));
+	a = ft_tuple_dot(r.direction, r.direction);
+	b = 2 * ft_tuple_dot(r.direction, sph_to_ray);
 	c = ft_tuple_dot(sph_to_ray, sph_to_ray) - 1;
 	discrimininant = (pow(b, 2) - (4 * a * c));
 	if (discrimininant < 0)
@@ -151,6 +149,6 @@ t_comps	ft_prepare_computations(t_intersection inter, t_ray ray)
 	else
 		comp.inside = 0;
 	comp.over_point = ft_add_tuples(comp.point,
-			ft_multiply_tuple(comp.normalv, 0.001));
+			ft_multiply_tuple(comp.normalv, 0.0001));
 	return (comp);
 }

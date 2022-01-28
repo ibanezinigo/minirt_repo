@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 11:51:59 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 19:09:54 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/28 13:34:33 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@
 # include <stdio.h>
 # include "ft_transformations.h"
 
-t_sphere	ft_create_sphere(void);
-t_sphere	ft_create_sphere_translated(t_matrix translation);
-void		ft_sphere_set_transform(t_sphere s, t_matrix translation);
-t_tuple		ft_normal_at(t_shape s, t_tuple t);
+t_shape		ft_create_sphere(void);
+t_shape		ft_create_sphere_translated(t_matrix translation);
+t_tuple		ft_normal_at_sphere(t_shape s, t_tuple object_point);
 t_tuple		ft_reflect(t_tuple in, t_tuple normal);
-void		ft_sphere_print(t_sphere s);
 
 #endif

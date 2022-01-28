@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:03:43 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 19:08:57 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/28 12:23:06 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,19 @@ t_canvas	ft_canvas(size_t w, size_t h)
 	canvas.width = w;
 	canvas.height = h;
 	canvas.pixel = malloc(sizeof(t_color *) * canvas.height);
-	i = 0;
-	while (i < canvas.height)
-	{
+	i = -1;
+	while (++i < canvas.height)
 		canvas.pixel[i] = malloc(sizeof(t_color) * canvas.width);
-		i++;
-	}
-	i = 0;
-	while (i < canvas.height)
+	i = -1;
+	while (++i < canvas.height)
 	{
-		j = 0;
-		while (j < canvas.width)
+		j = -1;
+		while (++j < canvas.width)
 		{
 			canvas.pixel[i][j].red = 0;
 			canvas.pixel[i][j].green = 0;
 			canvas.pixel[i][j].blue = 0;
-			j++;
 		}
-		i++;
 	}
 	return (canvas);
 }
@@ -93,12 +88,12 @@ void	ft_canvas_to_ppm(t_canvas c)
 	fprintf(f, "P3\n");
 	fprintf(f, "%zu %zu\n", c.width, c.height);
 	fprintf(f, "255\n");
-	h = 0;
+	h = -1;
 	total = 0;
-	while (h < c.height)
+	while (++h < c.height)
 	{
-		w = 0;
-		while (w < c.width)
+		w = -1;
+		while (++w < c.width)
 		{
 			ft_read_pixel(f, c, w, h);
 			if (w < (c.width - 1))
@@ -106,9 +101,7 @@ void	ft_canvas_to_ppm(t_canvas c)
 			if ((total + 1) % 5 == 0)
 				fprintf(f, "\n");
 			total++;
-			w++;
 		}
-		h++;
 	}
 	fclose(f);
 }

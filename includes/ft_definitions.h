@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 15:54:51 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 19:56:40 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/28 12:40:19 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,7 @@ typedef struct s_material
 
 typedef struct s_sphere
 {
-	t_tuple		origin;
-	float		radius;
-	t_matrix	transform;
-	t_material	material;
+
 }	t_sphere;
 
 typedef struct s_shape
@@ -74,6 +71,7 @@ typedef struct s_shape
 	t_matrix	transform;
 	t_material	material;
 	t_ray		saved_ray;
+	int			shape_type;
 }	t_shape;
 
 typedef struct s_intersection

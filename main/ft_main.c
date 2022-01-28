@@ -14,17 +14,162 @@
 #include "ft_camera.h"
 #include "ft_patterns.h"
 #include "ft_shapes.h"
+#include "ft_planes.h"
 
+
+int	main(void)
+{
+	t_canvas	canvas;
+	t_world		world;
+	t_camera	camera;
+	t_shape		middle;
+	t_shape		right;
+	t_shape		left;
+	t_light		light;
+	t_shape		plane;
+	t_shape		plane2;
+
+	plane = ft_plane();
+	plane.transform = ft_matrix_multiply(ft_matrix_rotation_x(M_PI / 2), ft_matrix_translation(0, 0, 40));
+	plane.material.color = ft_color(0.5, 1, 0.1);
+	plane.material.diffuse = 0.7;
+	plane.material.specular = 0.3;
+
+	plane2 = ft_plane();
+	plane2.transform = ft_matrix_multiply(ft_matrix_rotation_y(M_PI / 4), ft_matrix_translation(0, 0, 50));
+	plane2.material.color = ft_color(0.2, 1, 0.1);
+	plane2.material.diffuse = 0.7;
+	plane2.material.specular = 0.3;
+
+	middle = ft_create_sphere();
+	middle.transform = ft_matrix_translation(-0.5, 1, 0.5);
+	middle.material = ft_material();
+	middle.material.color = ft_color(0.1, 1, 0.5);
+	middle.material.diffuse = 0.7;
+	middle.material.specular = 0.3;
+	printf("middle\n");
+
+	right = ft_create_sphere();
+	right.transform = ft_matrix_multiply(ft_matrix_translation(1.5, 0.5, -0.5), ft_matrix_scaling(0.5, 0.5, 0.5));
+	right.material = ft_material();
+	right.material.color = ft_color(0.5, 1, 0.1);
+	right.material.diffuse = 0.7;
+	right.material.specular = 0.3;
+	printf("right\n");
+
+	left = ft_create_sphere();
+	left.transform = ft_matrix_multiply(ft_matrix_translation(-1.5, 0.33, -0.75), ft_matrix_scaling(0.33, 0.33, 0.33));
+	left.material = ft_material();
+	left.material.color = ft_color(1, 0.8, 0.1);
+	left.material.diffuse = 0.7;
+	left.material.specular = 0.3;
+	printf("left\n");
+
+	light = ft_point_light(ft_create_point(-10, 10, -10), ft_color(1, 1, 1));
+	world = ft_world();
+	world = ft_world_add_light(world, light);
+	world = ft_world_add_sphere(world, middle);
+	world = ft_world_add_sphere(world, right);
+	world = ft_world_add_sphere(world, left);
+	world = ft_world_add_sphere(world, plane);
+	world = ft_world_add_sphere(world, plane2);
+	printf("world\n");
+	printf("%i %i\n", world.n_lights, world.n_spheres);
+	printf("%f %f %f %f\n", world.lights[0].position.x, world.lights[0].position.y, world.lights[0].position.z, world.lights[0].position.w);
+	printf("%f %f %f\n", world.lights[0].intensity.red, world.lights[0].intensity.green, world.lights[0].intensity.blue);
+
+	camera = ft_camera(1000, 500, M_PI/3);
+	camera.transform = ft_view_transform(ft_create_point(0, 1.5, -5), ft_create_point(0, 1, 0), ft_create_vector(0, 1, 0));
+	printf("camera\n");
+	ft_print_matrix(camera.transform);
+
+	canvas = ft_render(camera, world);
+	printf("render\n");
+	ft_canvas_to_ppm(canvas);
+	printf("ppm\n");
+	return (0);
+}
+
+/*
+int	main(void)
+{
+	t_shape	p = ft_plane();
+	t_ray	r = ft_ray(ft_create_point(0, 10, 0), ft_create_vector(0, 0, 1));
+	t_intersections	xs = ft_intersect(&p, r);
+	printf("%i\n", xs.count);
+
+	p = ft_plane();
+	r = ft_ray(ft_create_point(0, 0, 0), ft_create_vector(0, 0, 1));
+	xs = ft_intersect(&p, r);
+	printf("%i\n", xs.count);
+
+	p = ft_plane();
+	r = ft_ray(ft_create_point(0, 1, 0), ft_create_vector(0, -1, 0));
+	xs = ft_intersect(&p, r);
+	printf("%i\n", xs.count);
+
+	p = ft_plane();
+	r = ft_ray(ft_create_point(0, -1, 0), ft_create_vector(0, 1, 0));
+	xs = ft_intersect(&p, r);
+	printf("%i\n", xs.count);
+
+	return (0);
+}*/
+
+/*
+int	main(void)
+{
+	t_shape p;
+
+	p = ft_plane();
+	t_tuple n1 = ft_normal_at(p, ft_create_point(0, 0, 0));
+	t_tuple n2 = ft_normal_at(p, ft_create_point(10, 0, -10));
+	t_tuple n3 = ft_normal_at(p, ft_create_point(-5, 0, 150));
+	printf("%f %f %f %f\n", n1.x, n1.y, n1.z, n1.w);
+	printf("%f %f %f %f\n", n2.x, n2.y, n2.z, n2.w);
+	printf("%f %f %f %f\n", n3.x, n3.y, n3.z, n3.w);
+	return (0);
+}*/
+
+/*
+int	main(void)
+{
+	t_shape		s;
+	t_tuple		n;
+	t_matrix	m;
+
+	s = ft_test_shape();
+	ft_set_transform(&s, ft_matrix_translation(0, 1, 0));
+	n = ft_normal_at(s, ft_create_point(0, 1.70711, -0.70711));
+	printf("%f %f %f %f\n",n.x, n.y, n.z, n.w);
+
+	s = ft_test_shape();
+	m = ft_matrix_multiply(ft_matrix_scaling(1, 0.5, 1), ft_matrix_rotation_z(M_PI / 5));
+	ft_set_transform(&s, m);
+	n = ft_normal_at(s, ft_create_point(0, sqrtf(2) / 2, sqrtf(2) / 2 * -1));
+	printf("%f %f %f %f\n",n.x, n.y, n.z, n.w);
+	return (0);
+}*/
+
+/*
 int	main(void)
 {
 	t_ray	r = ft_ray(ft_create_point(0, 0, -5), ft_create_vector(0, 0, 1));
 	t_shape	s = ft_test_shape();
-	ft_set_transform(s, ft_matrix_scaling(2, 2, 2));
-	t_intersections xs = ft_intersect(s, r);
+	ft_set_transform(&s, ft_matrix_scaling(2, 2, 2));
+	t_intersections xs = ft_intersect(&s, r);
 	printf("%f %f %f %f\n", s.saved_ray.origin.x, s.saved_ray.origin.y, s.saved_ray.origin.z, s.saved_ray.origin.w);
 	printf("%f %f %f %f\n", s.saved_ray.direction.x, s.saved_ray.direction.y, s.saved_ray.direction.z, s.saved_ray.direction.w);
+	
+	t_ray	r2 = ft_ray(ft_create_point(0, 0, -5), ft_create_vector(0, 0, 1));
+	t_shape	s2 = ft_test_shape();
+	ft_set_transform(&s2, ft_matrix_translation(5, 0, 0));
+	t_intersections xs2 = ft_intersect(&s2, r2);
+	printf("%f %f %f %f\n", s2.saved_ray.origin.x, s2.saved_ray.origin.y, s2.saved_ray.origin.z, s2.saved_ray.origin.w);
+	printf("%f %f %f %f\n", s2.saved_ray.direction.x, s2.saved_ray.direction.y, s2.saved_ray.direction.z, s2.saved_ray.direction.w);
+	
 	return (0);
-}
+}*/
 
 /*
 int	main(void)
@@ -140,12 +285,12 @@ int	main(void)
 	t_canvas	canvas;
 	t_world		world;
 	t_camera	camera;
-	t_sphere	floor;
-	t_sphere	left_wall;
-	t_sphere	right_wall;
-	t_sphere	middle;
-	t_sphere	right;
-	t_sphere	left;
+	t_shape		floor;
+	t_shape		left_wall;
+	t_shape		right_wall;
+	t_shape		middle;
+	t_shape		right;
+	t_shape		left;
 	t_light		light;
 
 	floor = ft_create_sphere();
@@ -215,7 +360,7 @@ int	main(void)
 	printf("%f %f %f %f\n", world.lights[0].position.x, world.lights[0].position.y, world.lights[0].position.z, world.lights[0].position.w);
 	printf("%f %f %f\n", world.lights[0].intensity.red, world.lights[0].intensity.green, world.lights[0].intensity.blue);
 
-	camera = ft_camera(1920, 960, M_PI/3);
+	camera = ft_camera(600, 300, M_PI/3);
 	camera.transform = ft_view_transform(ft_create_point(0, 1.5, -5), ft_create_point(0, 1, 0), ft_create_vector(0, 1, 0));
 	printf("camera\n");
 
@@ -809,13 +954,7 @@ int main(void)
 }*/
 
 /*
-int ft_compare_float(float n1, float n2)
-{
-	if (fabs(n1 - n2) < 0.00001)
-		return (1);
-	else
-		return (0);
-}
+
 
 
 

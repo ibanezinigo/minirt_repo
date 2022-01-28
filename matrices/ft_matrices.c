@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:04:04 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 19:58:41 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/28 13:06:28 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,4 +213,23 @@ t_matrix	ft_inverse(t_matrix m)
 		r++;
 	}
 	return (matrix);
+}
+
+void	ft_print_matrix(t_matrix m)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < m.rows)
+	{
+		x = 0;
+		while (x < m.cols)
+		{
+			printf("%f\t", m.data[y][x]);
+			x++;
+		}
+		y++;
+		printf("\n");
+	}
 }
