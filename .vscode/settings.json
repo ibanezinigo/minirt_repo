@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "ft_transformations.h": "c"
+        "ft_transformations.h": "c",
+        "ft_camera.h": "c"
     }
 }
