@@ -6,11 +6,24 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:03:43 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/28 12:23:06 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/28 20:08:38 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_canvas.h"
+
+void	ft_free_canvas(t_canvas c)
+{
+	int	i;
+
+	i = 0;
+	while (i < c.height)
+	{
+		free(c.pixel[i]);
+		i++;
+	}
+	free(c.pixel);
+}
 
 t_canvas	ft_canvas(size_t w, size_t h)
 {

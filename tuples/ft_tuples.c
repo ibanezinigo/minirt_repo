@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:04:39 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 19:42:04 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/28 17:47:52 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,10 @@ float	ft_tuple_magnitude(t_tuple t)
 	float	result;
 
 	result = 0;
-	result += pow(t.x, 2);
-	result += pow(t.y, 2);
-	result += pow(t.z, 2);
-	result += pow(t.w, 2);
+	result += powf(t.x, 2);
+	result += powf(t.y, 2);
+	result += powf(t.z, 2);
+	result += powf(t.w, 2);
 	result = sqrt(result);
 	return (result);
 }

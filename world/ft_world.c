@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:36:01 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/28 16:43:39 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/28 20:14:21 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ t_color	ft_color_at(t_world w, t_ray r)
 
 	inter = ft_intersect_world(w, r);
 	hit = ft_hit(inter);
+	if (inter.count > 0)
+		free(inter.xs);
 	if (hit.t < 0)
 		return (ft_color(0, 0, 0));
 	else
@@ -171,6 +173,8 @@ int	ft_is_shadowed(t_world world, t_tuple point)
 	ray = ft_ray(point, direction);
 	intersections = ft_intersect_world(world, ray);
 	hit = ft_hit(intersections);
+	if (intersections.count > 0)
+		free(intersections.xs);
 	if (hit.t != -1 && hit.t < distance)
 		return (1);
 	else

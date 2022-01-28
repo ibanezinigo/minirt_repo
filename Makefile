@@ -7,6 +7,7 @@ CFLAGS=
 MAIN= ft_main
 CAMERA = ft_camera
 CANVAS = ft_canvas
+CYLINDERS = ft_cylinders
 INTERSECTIONS = ft_intersections
 LIGHTS = ft_lights
 MATERIALS = ft_materials
@@ -24,6 +25,7 @@ SRC = $(addsuffix .c, $(addprefix main/, $(MAIN))) \
 	  $(addsuffix .c, $(addprefix camera/, $(CAMERA))) \
 	  $(addsuffix .c, $(addprefix lights/, $(LIGHTS))) \
 	  $(addsuffix .c, $(addprefix canvas/, $(CANVAS))) \
+	  $(addsuffix .c, $(addprefix cylinders/, $(CYLINDERS))) \
 	  $(addsuffix .c, $(addprefix intersections/, $(INTERSECTIONS))) \
 	  $(addsuffix .c, $(addprefix materials/, $(MATERIALS))) \
 	  $(addsuffix .c, $(addprefix matrices/, $(MATRICES))) \

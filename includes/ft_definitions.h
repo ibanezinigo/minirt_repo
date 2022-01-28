@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 15:54:51 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/28 12:40:19 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/28 18:49:00 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ typedef struct s_shape
 	t_material	material;
 	t_ray		saved_ray;
 	int			shape_type;
+	float		minimum;
+	float		maximum;
+	int			closed;
 }	t_shape;
 
 typedef struct s_intersection
