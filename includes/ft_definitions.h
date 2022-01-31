@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 15:54:51 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/28 18:49:00 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/31 11:51:10 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_pattern
 	t_color		a;
 	t_color		b;
 	t_matrix	transform;
+	int			pattern_type;
 }	t_pattern;
 
 typedef struct s_ray
@@ -60,11 +61,6 @@ typedef struct s_material
 	int			has_pattern;
 	t_pattern	pattern;
 }	t_material;
-
-typedef struct s_sphere
-{
-
-}	t_sphere;
 
 typedef struct s_shape
 {

@@ -16,8 +16,420 @@
 #include "ft_shapes.h"
 #include "ft_planes.h"
 #include "ft_cylinders.h"
+#include "ft_cones.h"
 
 
+int	main(void)
+{
+	t_canvas	canvas;
+	t_world		world;
+	t_camera	camera;
+	t_shape		middle;
+	t_shape		right;
+	t_shape		left;
+	t_light		light;
+	t_shape		plane;
+	t_shape		plane2;
+	t_shape		cyl;
+	t_shape		cone;
+
+	plane = ft_plane();
+	plane.transform = ft_matrix_multiply(ft_matrix_translation(0, 0, 40),ft_matrix_rotation_x(M_PI / 2));
+	plane.material.color = ft_color(0.5, 1, 0.1);
+	plane.material.diffuse = 0.7;
+	plane.material.specular = 0.3;
+	plane.material.pattern = ft_checker_pattern(ft_color(1,1,1), ft_color(0,0,0));
+	plane.material.has_pattern = 1;
+	//plane.material.pattern.transform = ft_matrix_multiply(ft_matrix_scaling(0.2, 0.1, 0.2), ft_matrix_rotation_z(M_PI/3));
+
+	plane2 = ft_plane();
+	plane2.transform = ft_matrix_multiply(ft_matrix_rotation_y(M_PI / 4), ft_matrix_translation(0, 0, 50));
+	plane2.material.color = ft_color(0.2, 1, 0.1);
+	plane2.material.diffuse = 0.7;
+	plane2.material.specular = 0.3;
+	//plane2.material.pattern = ft_checker_pattern(ft_color(1,1,1), ft_color(0,0,0));
+	//plane2.material.has_pattern = 1;
+	//plane2.material.pattern.transform = ft_matrix_rotation_z(M_PI/3);
+
+	middle = ft_create_sphere();
+	middle.transform = ft_matrix_translation(-0.5, 1, 0.5);
+	middle.material = ft_material();
+	middle.material.color = ft_color(0.1, 1, 0.5);
+	middle.material.diffuse = 0.7;
+	middle.material.specular = 0.3;
+	middle.material.pattern = ft_gradient_pattern(ft_color(1, 1, 1), ft_color(0, 0, 0));
+	//middle.material.pattern.transform = ft_matrix_scaling(0.5, 0.5, 0.5);
+	middle.material.has_pattern = 1;
+	printf("middle\n");
+
+	right = ft_create_sphere();
+	right.transform = ft_matrix_multiply(ft_matrix_translation(1.5, 0.5, -0.5), ft_matrix_scaling(0.5, 0.5, 0.5));
+	right.material = ft_material();
+	right.material.color = ft_color(0.5, 1, 0.1);
+	right.material.diffuse = 0.7;
+	right.material.specular = 0.3;
+	printf("right\n");
+
+	left = ft_create_sphere();
+	left.transform = ft_matrix_multiply(ft_matrix_translation(-1.5, 0.33, -0.75), ft_matrix_scaling(0.33, 0.33, 0.33));
+	left.material = ft_material();
+	left.material.color = ft_color(1, 0.8, 0.1);
+	left.material.diffuse = 0.7;
+	left.material.specular = 0.3;
+	printf("left\n");
+
+	cyl = ft_cylinder();
+	cyl.transform = ft_matrix_multiply(ft_matrix_multiply(ft_matrix_translation(0.5, 0, -0.5), ft_matrix_scaling(0.5, 0.5, 0.5)), ft_matrix_rotation_x(M_PI / 4 * -1));
+	cyl.material.color = ft_color(0, 1, 0);
+	cyl.material.diffuse = 0.7;
+	cyl.material.specular = 0.3;
+	cyl.closed = 1;
+	cyl.minimum = 1;
+	cyl.maximum = 3;
+
+	cone = ft_cone();
+	cone.material.color = ft_color(0.25, 0.25, 0.25);
+	cone.material.diffuse = 0.7;
+	cone.material.specular = 0.3;
+	cone.minimum = -1;
+	cone.maximum = 0;
+	cone.closed = 1;
+	cone.transform = ft_matrix_translation(-2, 1, 1);
+
+	light = ft_point_light(ft_create_point(-10, 10, -10), ft_color(1, 1, 1));
+	world = ft_world();
+	world = ft_world_add_light(world, light);
+	world = ft_world_add_sphere(world, middle);
+	world = ft_world_add_sphere(world, right);
+	world = ft_world_add_sphere(world, left);
+	world = ft_world_add_sphere(world, plane);
+	world = ft_world_add_sphere(world, plane2);
+	world = ft_world_add_sphere(world, cyl);
+	world = ft_world_add_sphere(world, cone);
+
+	printf("world\n");
+	printf("%i %i\n", world.n_lights, world.n_spheres);
+	printf("%f %f %f %f\n", world.lights[0].position.x, world.lights[0].position.y, world.lights[0].position.z, world.lights[0].position.w);
+	printf("%f %f %f\n", world.lights[0].intensity.red, world.lights[0].intensity.green, world.lights[0].intensity.blue);
+
+	camera = ft_camera(1000, 500, M_PI/3);
+	camera.transform = ft_view_transform(ft_create_point(0, 1.5, -5), ft_create_point(0, 1, 0), ft_create_vector(0, 1, 0));
+	printf("camera\n");
+	ft_print_matrix(camera.transform);
+
+	canvas = ft_render(camera, world);
+	printf("render\n");
+	ft_canvas_to_ppm(canvas);
+	printf("ppm\n");
+
+	ft_free_canvas(canvas);
+	free(world.spheres);
+	free(world.lights);
+	
+	return (0);
+}
+
+/*
+int	main(void)
+{
+	t_pattern pattern = ft_checker_pattern(ft_color(1, 1, 1), ft_color(0, 0, 0));
+	t_color c = ft_pattern_at_checker(pattern, ft_create_point(0,0,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_pattern_at_checker(pattern, ft_create_point(0.99,0,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_pattern_at_checker(pattern, ft_create_point(1.01,0,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	printf("\n");
+
+	c = ft_pattern_at_checker(pattern, ft_create_point(0,0,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_pattern_at_checker(pattern, ft_create_point(0, 0.99,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_pattern_at_checker(pattern, ft_create_point(0, 1.01,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	printf("\n");
+
+	c = ft_pattern_at_checker(pattern, ft_create_point(0,0,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_pattern_at_checker(pattern, ft_create_point(0,0, 0.99));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_pattern_at_checker(pattern, ft_create_point(0,0, 1.01));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	return (0);
+}*/
+
+/*
+int	main(void)
+{
+	t_shape shape = ft_cone();
+	t_tuple n = ft_normal_at_cone(shape, ft_create_point(0,0,0));
+	printf("%f %f %f\n", n.x, n.y, n.z);
+
+	n = ft_normal_at_cone(shape, ft_create_point(1,1,1));
+	printf("%f %f %f\n", n.x, n.y, n.z);
+
+	n = ft_normal_at_cone(shape, ft_create_point(-1,-1,0));
+	printf("%f %f %f\n", n.x, n.y, n.z);
+
+	return (0);
+}
+*/
+
+/*
+int	main(void)
+{
+	t_shape shape = ft_cone();
+	shape.minimum = -0.5;
+	shape.maximum = 0.5;
+	shape.closed = 1;
+	t_tuple direction = ft_tuple_normalize(ft_create_vector(0, 1, 0));
+	t_ray r = ft_ray(ft_create_point(0, 0, -5), direction);
+	t_intersections xs = ft_cones_intersect(shape, r);
+	printf("%i\n", xs.count);
+
+	direction = ft_tuple_normalize(ft_create_vector(0, 1, 1));
+	r = ft_ray(ft_create_point(0, 0, -0.25), direction);
+	xs = ft_cones_intersect(shape, r);
+	printf("%i\n", xs.count);
+	printf("%f\n", xs.xs[0].t);
+	printf("%f\n", xs.xs[1].t);
+
+	direction = ft_tuple_normalize(ft_create_vector(0, 1, 0));
+	r = ft_ray(ft_create_point(0, 0, -0.25), direction);
+	xs = ft_cones_intersect(shape, r);
+	printf("%i\n", xs.count);
+	printf("%f\n", xs.xs[0].t);
+	printf("%f\n", xs.xs[1].t);
+	return (0);
+}*/
+
+/*
+int	main(void)
+{
+	t_shape shape = ft_cone();
+	t_tuple direction = ft_tuple_normalize(ft_create_vector(0, 1, 1));
+	t_ray r = ft_ray(ft_create_point(0, 0, -1), direction);
+	t_intersections xs = ft_cones_intersect(shape, r);
+	printf("%i\n", xs.count);
+	printf("%f\n", xs.xs[0].t);
+	return (0);
+}*/
+
+/*
+int	main(void)
+{
+	t_shape shape = ft_cone();
+	t_tuple	direction = ft_tuple_normalize(ft_create_vector(0, 0, 1));
+	t_ray r = ft_ray(ft_create_point(0, 0, -5), direction);
+	t_intersections xs = ft_cones_intersect(shape, r);
+	printf("%i\n", xs.count);
+	printf("%f\n", xs.xs[0].t);
+	printf("%f\n\n", xs.xs[1].t);
+
+	shape = ft_cone();
+	direction = ft_tuple_normalize(ft_create_vector(1, 1, 1));
+	r = ft_ray(ft_create_point(0, 0, -5), direction);
+	xs = ft_cones_intersect(shape, r);
+	printf("%i\n", xs.count);
+	printf("%f\n", xs.xs[0].t);
+	printf("%f\n\n", xs.xs[1].t);
+
+	shape = ft_cone();
+	direction = ft_tuple_normalize(ft_create_vector(-0.5, -1, 1));
+	r = ft_ray(ft_create_point(1, 1, -5), direction);
+	xs = ft_cones_intersect(shape, r);
+	printf("%i\n", xs.count);
+	printf("%f\n", xs.xs[0].t);
+	printf("%f\n\n", xs.xs[1].t);
+
+	return (0);
+}*/
+
+/*
+int	main(void)
+{
+	t_canvas	canvas;
+	t_world		world;
+	t_camera	camera;
+	t_shape		middle;
+	t_shape		right;
+	t_shape		left;
+	t_light		light;
+	t_shape		plane;
+	t_shape		plane2;
+	t_shape		cyl;
+
+	plane = ft_plane();
+	plane.transform = ft_matrix_multiply(ft_matrix_rotation_x(M_PI / 2), ft_matrix_translation(0, 0, 40));
+	plane.material.color = ft_color(0.5, 1, 0.1);
+	plane.material.diffuse = 0.7;
+	plane.material.specular = 0.3;
+	plane.material.pattern = ft_checker_pattern(ft_color(1,1,1), ft_color(0,0,0));
+	plane.material.has_pattern = 1;
+	//plane.material.pattern.transform = ft_matrix_multiply(ft_matrix_scaling(0.2, 0.1, 0.2), ft_matrix_rotation_z(M_PI/3));
+
+
+
+	plane2 = ft_plane();
+	plane2.transform = ft_matrix_multiply(ft_matrix_rotation_y(M_PI / 4), ft_matrix_translation(0, 0, 50));
+	plane2.material.color = ft_color(0.2, 1, 0.1);
+	plane2.material.diffuse = 0.7;
+	plane2.material.specular = 0.3;
+	//plane2.material.pattern = ft_checker_pattern(ft_color(1,1,1), ft_color(0,0,0));
+	//plane2.material.has_pattern = 1;
+	//plane2.material.pattern.transform = ft_matrix_rotation_z(M_PI/3);
+
+	middle = ft_create_sphere();
+	middle.transform = ft_matrix_translation(-0.5, 1, 0.5);
+	middle.material = ft_material();
+	middle.material.color = ft_color(0.1, 1, 0.5);
+	middle.material.diffuse = 0.7;
+	middle.material.specular = 0.3;
+	middle.material.pattern = ft_gradient_pattern(ft_color(1, 1, 1), ft_color(0, 0, 0));
+	//middle.material.pattern.transform = ft_matrix_scaling(0.5, 0.5, 0.5);
+	middle.material.has_pattern = 1;
+	printf("middle\n");
+
+	right = ft_create_sphere();
+	right.transform = ft_matrix_multiply(ft_matrix_translation(1.5, 0.5, -0.5), ft_matrix_scaling(0.5, 0.5, 0.5));
+	right.material = ft_material();
+	right.material.color = ft_color(0.5, 1, 0.1);
+	right.material.diffuse = 0.7;
+	right.material.specular = 0.3;
+	printf("right\n");
+
+	left = ft_create_sphere();
+	left.transform = ft_matrix_multiply(ft_matrix_translation(-1.5, 0.33, -0.75), ft_matrix_scaling(0.33, 0.33, 0.33));
+	left.material = ft_material();
+	left.material.color = ft_color(1, 0.8, 0.1);
+	left.material.diffuse = 0.7;
+	left.material.specular = 0.3;
+	printf("left\n");
+
+	cyl = ft_cylinder();
+	cyl.transform = ft_matrix_multiply(ft_matrix_multiply(ft_matrix_translation(0.5, 0, -0.5), ft_matrix_scaling(0.5, 0.5, 0.5)), ft_matrix_rotation_x(M_PI / 4 * -1));
+	cyl.material.color = ft_color(0, 1, 0);
+	cyl.material.diffuse = 0.7;
+	cyl.material.specular = 0.3;
+	cyl.closed = 1;
+	cyl.minimum = 1;
+	cyl.maximum = 3;
+
+	light = ft_point_light(ft_create_point(-10, 10, -10), ft_color(1, 1, 1));
+	world = ft_world();
+	world = ft_world_add_light(world, light);
+	world = ft_world_add_sphere(world, middle);
+	world = ft_world_add_sphere(world, right);
+	world = ft_world_add_sphere(world, left);
+	world = ft_world_add_sphere(world, plane);
+	world = ft_world_add_sphere(world, plane2);
+	world = ft_world_add_sphere(world, cyl);
+
+	printf("world\n");
+	printf("%i %i\n", world.n_lights, world.n_spheres);
+	printf("%f %f %f %f\n", world.lights[0].position.x, world.lights[0].position.y, world.lights[0].position.z, world.lights[0].position.w);
+	printf("%f %f %f\n", world.lights[0].intensity.red, world.lights[0].intensity.green, world.lights[0].intensity.blue);
+
+	camera = ft_camera(500, 250, M_PI/3);
+	camera.transform = ft_view_transform(ft_create_point(0, 1.5, -5), ft_create_point(0, 1, 0), ft_create_vector(0, 1, 0));
+	printf("camera\n");
+	ft_print_matrix(camera.transform);
+
+	canvas = ft_render(camera, world);
+	printf("render\n");
+	ft_canvas_to_ppm(canvas);
+	printf("ppm\n");
+
+	ft_free_canvas(canvas);
+	free(world.spheres);
+	free(world.lights);
+	
+	return (0);
+}*/
+
+/*
+int	main(void)
+{
+	t_pattern pattern = ft_checker_pattern(ft_color(1, 1, 1), ft_color(0, 0, 0));
+	t_color c = ft_pattern_at_checker(pattern, ft_create_point(0,0,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_pattern_at_checker(pattern, ft_create_point(0.99,0,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_pattern_at_checker(pattern, ft_create_point(1.01,0,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	printf("\n");
+
+	c = ft_pattern_at_checker(pattern, ft_create_point(0,0,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_pattern_at_checker(pattern, ft_create_point(0, 0.99,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_pattern_at_checker(pattern, ft_create_point(0, 1.01,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	printf("\n");
+
+	c = ft_pattern_at_checker(pattern, ft_create_point(0,0,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_pattern_at_checker(pattern, ft_create_point(0,0, 0.99));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_pattern_at_checker(pattern, ft_create_point(0,0, 1.01));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	return (0);
+}*/
+
+/*
+int	main(void)
+{
+	t_pattern pattern = ft_ring_pattern(ft_color(1, 1, 1), ft_color(0, 0, 0));
+	t_color c = ft_pattern_at_ring(pattern, ft_create_point(0,0,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_pattern_at_ring(pattern, ft_create_point(1,0,0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_pattern_at_ring(pattern, ft_create_point(0,0,1));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_pattern_at_ring(pattern, ft_create_point(0.708,0,0.708));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	return (0);
+}*/
+
+/*
+int	main(void)
+{
+	t_pattern pattern = ft_gradient_pattern(ft_color(1, 1, 1), ft_color(0, 0, 0));
+	t_color c = ft_pattern_at_gradient(pattern, ft_create_point(0, 0, 0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_pattern_at_gradient(pattern, ft_create_point(0.25, 0, 0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_pattern_at_gradient(pattern, ft_create_point(0.5, 0, 0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	c = ft_pattern_at_gradient(pattern, ft_create_point(0.75, 0, 0));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+}*/
+
+/*
+int	main(void)
+{
+	t_shape object = ft_create_sphere();
+	ft_set_transform(&object, ft_matrix_scaling(2, 2, 2));
+	t_pattern pattern = ft_stripe_pattern(ft_color(1, 1, 1), ft_color(0,0,0));
+	t_color c = ft_pattern_at_shape(pattern, object, ft_create_point(2, 3, 4));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+
+	object = ft_create_sphere();
+	pattern = ft_stripe_pattern(ft_color(1, 1, 1), ft_color(0,0,0));
+	pattern.transform = ft_matrix_scaling(2, 2, 2);
+	c = ft_pattern_at_shape(pattern, object, ft_create_point(2, 3, 4));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+
+	object = ft_create_sphere();
+	ft_set_transform(&object, ft_matrix_scaling(2, 2, 2));
+	pattern = ft_stripe_pattern(ft_color(1, 1, 1), ft_color(0,0,0));
+	pattern.transform = ft_matrix_translation(0.5, 1, 1.5);
+	c = ft_pattern_at_shape(pattern, object, ft_create_point(2.5, 3, 3.5));
+	printf("%f %f %f\n", c.red, c.green, c.blue);
+	return (0);
+}*/
+
+/*
 int	main(void)
 {
 	t_canvas	canvas;
@@ -91,7 +503,7 @@ int	main(void)
 	printf("%f %f %f %f\n", world.lights[0].position.x, world.lights[0].position.y, world.lights[0].position.z, world.lights[0].position.w);
 	printf("%f %f %f\n", world.lights[0].intensity.red, world.lights[0].intensity.green, world.lights[0].intensity.blue);
 
-	camera = ft_camera(2, 1, M_PI/3);
+	camera = ft_camera(20000, 10000, M_PI/3);
 	camera.transform = ft_view_transform(ft_create_point(0, 1.5, -5), ft_create_point(0, 1, 0), ft_create_vector(0, 1, 0));
 	printf("camera\n");
 	ft_print_matrix(camera.transform);
@@ -106,7 +518,7 @@ int	main(void)
 	free(world.lights);
 	
 	return (0);
-}
+}*/
 
 /*
 int	main(void)

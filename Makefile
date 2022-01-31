@@ -4,29 +4,33 @@ CC= gcc
 
 CFLAGS= 
 
-MAIN= ft_main
+MAIN = main
 CAMERA = ft_camera
 CANVAS = ft_canvas
+CONES = ft_cones
 CYLINDERS = ft_cylinders
+GNL = get_next_line get_next_line_utils
 INTERSECTIONS = ft_intersections
 LIGHTS = ft_lights
 MATERIALS = ft_materials
-MATRICES = ft_matrices
+MATRICES = ft_matrices ft_matrices_2 ft_matrices_3
 PATTERNS = ft_patterns
 PLANES = ft_planes
 RAYS = ft_rays
 SHAPES = ft_shapes
 SPHERES = ft_spheres
-TRANSFORMATIONS = ft_transformations
-TUPLES = ft_tuples
-WORLD = ft_world
+TRANSFORMATIONS = ft_transformations ft_transformations_2
+TUPLES = ft_tuples ft_tuples_1 ft_tuples_2 ft_tuples_3
+WORLD = ft_world ft_world_2
 
 SRC = $(addsuffix .c, $(addprefix main/, $(MAIN))) \
 	  $(addsuffix .c, $(addprefix camera/, $(CAMERA))) \
-	  $(addsuffix .c, $(addprefix lights/, $(LIGHTS))) \
 	  $(addsuffix .c, $(addprefix canvas/, $(CANVAS))) \
+	  $(addsuffix .c, $(addprefix cones/, $(CONES))) \
 	  $(addsuffix .c, $(addprefix cylinders/, $(CYLINDERS))) \
+	  $(addsuffix .c, $(addprefix get_next_line/, $(GNL))) \
 	  $(addsuffix .c, $(addprefix intersections/, $(INTERSECTIONS))) \
+	  $(addsuffix .c, $(addprefix lights/, $(LIGHTS))) \
 	  $(addsuffix .c, $(addprefix materials/, $(MATERIALS))) \
 	  $(addsuffix .c, $(addprefix matrices/, $(MATRICES))) \
 	  $(addsuffix .c, $(addprefix patterns/, $(PATTERNS))) \

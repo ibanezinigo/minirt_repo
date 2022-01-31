@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 12:02:50 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/27 19:17:01 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/31 13:50:46 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_material	ft_material(void)
 	return (m);
 }
 
-t_color	ft_lighting(t_material material, t_light light, t_tuple point,
+t_color	ft_lighting(t_shape shape, t_material material, t_light light, t_tuple point,
 	t_tuple eyev, t_tuple normalv, int in_shadow)
 {
 	t_color	effective_color;
@@ -41,7 +41,7 @@ t_color	ft_lighting(t_material material, t_light light, t_tuple point,
 	t_color	color;
 
 	if (material.has_pattern)
-		color = ft_stripe_at(material.pattern, point);
+		color = ft_pattern_at_shape(material.pattern, shape, point);
 	else
 		color = material.color;
 	effective_color = ft_color_multiply_bycolor(color, light.intensity);

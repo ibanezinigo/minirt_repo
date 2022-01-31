@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:36:01 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/28 20:14:21 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/31 12:55:34 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ t_intersections	ft_intersect_world(t_world world, t_ray ray)
 	while (i < world.n_spheres)
 	{
 		tmp = ft_intersect(&world.spheres[i], ray);
-		xs = ft_add_intersections(xs, tmp);
+		xs = ft_add_intersections(&xs, tmp);
+		if (tmp.count > 0)
+			free(tmp.xs);
 		i++;
 	}
 	i = 0;
@@ -79,7 +81,7 @@ t_intersections	ft_intersect_world(t_world world, t_ray ray)
 	return (xs);
 }
 
-t_color	ft_shade_hit(t_world w, t_comps c)
+t_color	ft_shade_hit(t_shape shape, t_world w, t_comps c)
 {
 	t_color	result;
 	int		is_shadowed;
@@ -90,7 +92,7 @@ t_color	ft_shade_hit(t_world w, t_comps c)
 	while (i < w.n_lights)
 	{
 		is_shadowed = ft_is_shadowed(w, c.over_point);
-		result = ft_color_add(result, ft_lighting(c.object.material,
+		result = ft_color_add(result, ft_lighting(shape, c.object.material,
 					w.lights[i], c.over_point, c.eyev, c.normalv, is_shadowed));
 		i++;
 	}
@@ -112,71 +114,6 @@ t_color	ft_color_at(t_world w, t_ray r)
 	else
 	{
 		c = ft_prepare_computations(hit, r);
-		return (ft_shade_hit(w, c));
+		return (ft_shade_hit(hit.object ,w, c));
 	}
-}
-
-t_world	ft_world_add_light(t_world world, t_light newlight)
-{
-	t_world	newworld;
-	int		i;
-
-	newworld.n_spheres = world.n_spheres;
-	newworld.spheres = world.spheres;
-	newworld.n_lights = world.n_lights + 1;
-	i = 0;
-	newworld.lights = malloc(sizeof(t_light) * newworld.n_lights);
-	while (i < world.n_lights)
-	{
-		newworld.lights[i] = (t_light) world.lights[i];
-		i++;
-	}
-	newworld.lights[i] = newlight;
-	if (world.n_lights > 0)
-		free(world.lights);
-	return (newworld);
-}
-
-t_world	ft_world_add_sphere(t_world world, t_shape sphere)
-{
-	t_world	newworld;
-	int		i;
-
-	newworld.n_lights = world.n_lights;
-	newworld.lights = world.lights;
-	newworld.n_spheres = world.n_spheres + 1;
-	i = 0;
-	newworld.spheres = malloc(sizeof(t_shape) * newworld.n_spheres);
-	while (i < world.n_spheres)
-	{
-		newworld.spheres[i] = world.spheres[i];
-		i++;
-	}
-	newworld.spheres[i] = sphere;
-	if (world.n_spheres > 0)
-		free(world.spheres);
-	return (newworld);
-}
-
-int	ft_is_shadowed(t_world world, t_tuple point)
-{
-	t_tuple			v;
-	float			distance;
-	t_tuple			direction;
-	t_ray			ray;
-	t_intersections	intersections;
-	t_intersection	hit;
-
-	v = ft_subtract_tuples(world.lights[0].position, point);
-	distance = ft_tuple_magnitude(v);
-	direction = ft_tuple_normalize(v);
-	ray = ft_ray(point, direction);
-	intersections = ft_intersect_world(world, ray);
-	hit = ft_hit(intersections);
-	if (intersections.count > 0)
-		free(intersections.xs);
-	if (hit.t != -1 && hit.t < distance)
-		return (1);
-	else
-		return (0);
 }

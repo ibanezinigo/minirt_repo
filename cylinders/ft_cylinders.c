@@ -6,13 +6,13 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 17:39:36 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/28 20:15:16 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/31 11:22:50 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cylinders.h"
 
-t_shape	ft_cylinder()
+t_shape	ft_cylinder(void)
 {
 	t_shape	cylinder;
 
@@ -54,18 +54,14 @@ t_intersections	ft_intersect_caps(t_shape cyl, t_ray ray, t_intersections inter)
 	if (cyl.closed == 1)
 	{
 		t = (cyl.minimum - ray.origin.y) / ray.direction.y;
-		//printf("%f\n", t);
 		if (ft_check_cap(ray, t))
 		{
-			//printf("cap1 count: %i\n", inter.count);
 			inter.xs[inter.count] = ft_intersection(t, cyl);
 			inter.count = inter.count + 1;
 		}
 		t = (cyl.maximum - ray.origin.y) / ray.direction.y;
-		//printf("%f\n", t);
 		if (ft_check_cap(ray, t))
 		{
-			//printf("cap2 count: %i\n", inter.count);
 			inter.xs[inter.count] = ft_intersection(t, cyl);
 			inter.count = inter.count + 1;
 		}
@@ -90,7 +86,7 @@ t_intersections	ft_cylinders_intersect(t_shape cyl, t_ray ray)
 	float			y0;
 	float			y1;
 	
-	inter.xs = malloc(sizeof(t_intersection) * 2);
+	inter.xs = malloc(sizeof(t_intersection) * 4);
 	a = powf(ray.direction.x, 2) + powf(ray.direction.z, 2);
 	if (a < 0.00001 && a > 0.00001)
 		return (ft_intersect_caps(cyl, ray, inter));

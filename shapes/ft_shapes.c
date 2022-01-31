@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 18:50:12 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/28 19:23:01 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/31 18:10:12 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ t_intersections	ft_intersect(t_shape *shape, t_ray ray)
 		xs = ft_plane_intersect(*shape, shape->saved_ray);
 	else if (shape->shape_type == 3)
 		xs = ft_cylinders_intersect(*shape, shape->saved_ray);
+	else if (shape->shape_type == 4)
+		xs = ft_cones_intersect(*shape, shape->saved_ray);
 	else
 		xs = ft_sphere_intersect(*shape, shape->saved_ray);
 	return (xs);
@@ -71,6 +73,8 @@ t_tuple	ft_normal_at(t_shape s, t_tuple t)
 		object_normal = ft_normal_at_plane();
 	else if (s.shape_type == 3)
 		object_normal = ft_normal_at_cylinder(s, object_point);
+	else if (s.shape_type == 4)
+		object_normal = ft_normal_at_cone(s, object_point);
 	else
 	{
 		printf("Error at ft_normal_at -> no shape type defined\n");

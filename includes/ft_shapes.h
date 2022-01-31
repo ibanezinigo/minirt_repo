@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 18:49:40 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/28 17:56:17 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/31 18:10:34 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 # include "ft_intersections.h"
 # include "ft_planes.h"
 # include "ft_cylinders.h"
+# include "ft_cones.h"
 
 t_shape			ft_test_shape(void);
 void			ft_set_transform(t_shape *s, t_matrix translation);
 t_intersections	ft_intersect(t_shape *shape, t_ray ray);
 t_tuple			ft_normal_at(t_shape s, t_tuple t);
-
 
 #endif

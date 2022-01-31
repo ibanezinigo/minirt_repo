@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 11:55:18 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/28 15:54:51 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/01/31 10:37:02 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,34 +102,37 @@ t_intersection	ft_hit(t_intersections inter)
 	return (inter.xs[minpos]);
 }
 
-t_intersections	ft_add_intersections(t_intersections dest, t_intersections new)
+t_intersections	ft_add_intersections(t_intersections *dest, t_intersections new)
 {
 	t_intersections	result;
 	int				i;
 	int				saved;
 
-	result.count = dest.count + new.count;
-	result.xs = malloc(sizeof(t_intersection) * result.count);
-	saved = 0;
-	i = 0;
-	while (i < dest.count)
-	{
-		result.xs[saved] = dest.xs[i];
-		saved++;
-		i++;
-	}
-	i = 0;
-	while (i < new.count)
-	{
-		result.xs[saved] = new.xs[i];
-		saved++;
-		i++;
-	}
-	if (dest.count > 0)
-		free(dest.xs);
 	if (new.count > 0)
-		free(new.xs);
-	return (result);
+	{
+		result.count = dest->count + new.count;
+		result.xs = malloc(sizeof(t_intersection) * result.count);
+		saved = 0;
+		i = 0;
+		while (i < dest->count)
+		{
+			result.xs[saved].object = dest->xs[i].object;
+			result.xs[saved].t = dest->xs[i].t;
+			saved++;
+			i++;
+		}
+		i = 0;
+		while (i < new.count)
+		{
+			result.xs[saved] = new.xs[i];
+			saved++;
+			i++;
+		}
+		if (dest->count > 0)
+			free(dest->xs);
+		return (result);
+	}
+	return (*dest);
 }
 
 t_comps	ft_prepare_computations(t_intersection inter, t_ray ray)
