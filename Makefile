@@ -2,7 +2,7 @@ NAME = minirt
 
 CC= gcc
 
-CFLAGS= 
+CFLAGS= -fsanitize=address -g3
 
 MAIN = main
 CAMERA = ft_camera
@@ -21,6 +21,7 @@ SHAPES = ft_shapes
 SPHERES = ft_spheres
 TRANSFORMATIONS = ft_transformations ft_transformations_2
 TUPLES = ft_tuples ft_tuples_1 ft_tuples_2 ft_tuples_3
+UTILS = ft_utils
 WORLD = ft_world ft_world_2
 
 SRC = $(addsuffix .c, $(addprefix main/, $(MAIN))) \
@@ -40,6 +41,7 @@ SRC = $(addsuffix .c, $(addprefix main/, $(MAIN))) \
 	  $(addsuffix .c, $(addprefix spheres/, $(SPHERES))) \
 	  $(addsuffix .c, $(addprefix transformations/, $(TRANSFORMATIONS))) \
 	  $(addsuffix .c, $(addprefix tuples/, $(TUPLES))) \
+	  $(addsuffix .c, $(addprefix utils/, $(UTILS))) \
 	  $(addsuffix .c, $(addprefix world/, $(WORLD))) \
 
 OBJ = $(SRC:%.c=%.o)

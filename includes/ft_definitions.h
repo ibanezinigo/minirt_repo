@@ -115,6 +115,7 @@ typedef struct s_world
 	t_light		*lights;
 	int			n_spheres;
 	t_shape		*spheres;
+	t_camera	camera;
 
 }	t_world;
 
