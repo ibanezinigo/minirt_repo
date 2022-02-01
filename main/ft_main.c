@@ -17,6 +17,7 @@
 #include "ft_planes.h"
 #include "ft_cylinders.h"
 #include "ft_cones.h"
+#include "main.h"
 
 
 int	main(void)
@@ -35,21 +36,19 @@ int	main(void)
 
 	plane = ft_plane();
 	plane.transform = ft_matrix_multiply(ft_matrix_translation(0, 0, 40),ft_matrix_rotation_x(M_PI / 2));
+	plane.material = ft_material();
 	plane.material.color = ft_color(0.5, 1, 0.1);
-	plane.material.diffuse = 0.7;
-	plane.material.specular = 0.3;
-	plane.material.pattern = ft_checker_pattern(ft_color(1,1,1), ft_color(0,0,0));
-	plane.material.has_pattern = 1;
+	//plane.material.pattern = ft_checker_pattern(ft_color(1,1,1), ft_color(0,0,0));
+	//plane.material.has_pattern = 1;
 	//plane.material.pattern.transform = ft_matrix_multiply(ft_matrix_scaling(0.2, 0.1, 0.2), ft_matrix_rotation_z(M_PI/3));
 
 	plane2 = ft_plane();
-	plane2.transform = ft_matrix_multiply(ft_matrix_rotation_y(M_PI / 4), ft_matrix_translation(0, 0, 50));
-	plane2.material.color = ft_color(0.2, 1, 0.1);
-	plane2.material.diffuse = 0.7;
-	plane2.material.specular = 0.3;
+	plane2.transform = ft_matrix_multiply(ft_matrix_translation(0, 0, 50), ft_matrix_rotation_y(M_PI / 4));
+	plane2.material = ft_material();
+	plane2.material.color = ft_color(0.5, 0.5, 0.5);
 	//plane2.material.pattern = ft_checker_pattern(ft_color(1,1,1), ft_color(0,0,0));
 	//plane2.material.has_pattern = 1;
-	//plane2.material.pattern.transform = ft_matrix_rotation_z(M_PI/3);
+	//plane2.material.pattern.transform = ft_matrix_rotation_z(M_PI/3);*/
 
 	middle = ft_create_sphere();
 	middle.transform = ft_matrix_translation(-0.5, 1, 0.5);
@@ -57,12 +56,12 @@ int	main(void)
 	middle.material.color = ft_color(0.1, 1, 0.5);
 	middle.material.diffuse = 0.7;
 	middle.material.specular = 0.3;
-	middle.material.pattern = ft_gradient_pattern(ft_color(1, 1, 1), ft_color(0, 0, 0));
+	//middle.material.pattern = ft_gradient_pattern(ft_color(1, 1, 1), ft_color(0, 0, 0));
 	//middle.material.pattern.transform = ft_matrix_scaling(0.5, 0.5, 0.5);
-	middle.material.has_pattern = 1;
+	//middle.material.has_pattern = 1;
 	printf("middle\n");
 
-	right = ft_create_sphere();
+	/*right = ft_create_sphere();
 	right.transform = ft_matrix_multiply(ft_matrix_translation(1.5, 0.5, -0.5), ft_matrix_scaling(0.5, 0.5, 0.5));
 	right.material = ft_material();
 	right.material.color = ft_color(0.5, 1, 0.1);
@@ -94,29 +93,30 @@ int	main(void)
 	cone.minimum = -1;
 	cone.maximum = 0;
 	cone.closed = 1;
-	cone.transform = ft_matrix_translation(-2, 1, 1);
+	cone.transform = ft_matrix_translation(-2, 1, 1);*/
 
 	light = ft_point_light(ft_create_point(-10, 10, -10), ft_color(1, 1, 1));
 	world = ft_world();
 	world = ft_world_add_light(world, light);
 	world = ft_world_add_sphere(world, middle);
-	world = ft_world_add_sphere(world, right);
-	world = ft_world_add_sphere(world, left);
+	/*world = ft_world_add_sphere(world, right);
+	world = ft_world_add_sphere(world, left);*/
 	world = ft_world_add_sphere(world, plane);
 	world = ft_world_add_sphere(world, plane2);
-	world = ft_world_add_sphere(world, cyl);
-	world = ft_world_add_sphere(world, cone);
+	/*world = ft_world_add_sphere(world, cyl);
+	world = ft_world_add_sphere(world, cone);*/
 
 	printf("world\n");
 	printf("%i %i\n", world.n_lights, world.n_spheres);
 	printf("%f %f %f %f\n", world.lights[0].position.x, world.lights[0].position.y, world.lights[0].position.z, world.lights[0].position.w);
 	printf("%f %f %f\n", world.lights[0].intensity.red, world.lights[0].intensity.green, world.lights[0].intensity.blue);
 
-	camera = ft_camera(1000, 500, M_PI/3);
+	camera = ft_camera(500, 250, M_PI/3);
 	camera.transform = ft_view_transform(ft_create_point(0, 1.5, -5), ft_create_point(0, 1, 0), ft_create_vector(0, 1, 0));
 	printf("camera\n");
 	ft_print_matrix(camera.transform);
 
+	ft_print_world(world);
 	canvas = ft_render(camera, world);
 	printf("render\n");
 	ft_canvas_to_ppm(canvas);

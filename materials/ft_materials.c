@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 12:02:50 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/31 13:50:46 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/01 17:18:53 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ t_material	ft_material(void)
 
 	m.color = ft_color(1, 1, 1);
 	m.ambient = 0.1;
-	m.diffuse = 0.9;
-	m.specular = 0.9;
+	m.diffuse = 0.7;
+	m.specular = 0.3;
 	m.shininess = 200;
 	m.has_pattern = 0;
 	return (m);

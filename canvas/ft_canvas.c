@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:03:43 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/31 11:11:44 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/01 13:14:55 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,11 @@ void	ft_canvas_to_ppm(t_canvas c)
 			ft_read_pixel(f, c, w, h);
 			if (w < (c.width - 1))
 				fprintf(f, " ");
-			if ((total + 1) % 5 == 0)
-				fprintf(f, "\n");
+			//if ((total + 1) % 5 == 0)
+				//fprintf(f, "\n");
 			total++;
 		}
+		fprintf(f, "\n");
 	}
 	fclose(f);
 }

@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 11:25:07 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/31 13:49:20 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/01 12:01:37 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_world	ft_world_add_light(t_world world, t_light newlight)
 	t_world	newworld;
 	int		i;
 
+	newworld = world;
 	newworld.n_spheres = world.n_spheres;
 	newworld.spheres = world.spheres;
 	newworld.n_lights = world.n_lights + 1;
@@ -38,6 +39,7 @@ t_world	ft_world_add_sphere(t_world world, t_shape sphere)
 	t_world	newworld;
 	int		i;
 
+	newworld = world;
 	newworld.n_lights = world.n_lights;
 	newworld.lights = world.lights;
 	newworld.n_spheres = world.n_spheres + 1;

@@ -49,10 +49,10 @@ OBJ = $(SRC:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -I ./includes -o $(NAME) $(OBJ) 
+	@$(CC) $(CFLAGS) -I ./includes -o $(NAME) $(OBJ) 
 
 %.o: %.c
-		${CC} ${CFLAGS} -I ./includes -c $< -o $@
+		@${CC} ${CFLAGS} -I ./includes -c $< -o $@
 
 clean:
 	@rm -f $(OBJ)

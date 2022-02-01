@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 18:45:42 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/31 20:36:39 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/01 21:01:40 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,9 @@ t_world	ft_read_ambient_ligth(t_world w, char *line)
 
 	ambient = ft_get_word(line, 2);
 	color = ft_get_word(line, 3);
+	printf("Ambient->\n");
+	printf("\tRatio-> %s\n",ambient);
+	printf("\tColor-> %s\n",color);
 	return (w);
 }
 
@@ -108,20 +111,22 @@ t_world	ft_read_camera(t_world w, char *line)
 	t_tuple		dir;
 
 	str = ft_get_word(line, 4);
-	c = ft_camera(1920, 1080, M_PI / 180 * ft_atof(str));
+	c = ft_camera(500, 250, M_PI / 180.0 * ft_atof(str));
+	printf("fieldofview->%f\n",c.field_of_view);
 	free(str);
 
 	str = ft_get_word(line, 2);
 	o = ft_read_coords(str);
+	o = ft_create_point(o.x, o.y, o.z);
 	free(str);
 	
 	str = ft_get_word(line, 3);
-	dir = ft_read_coords(str);
+	dir = ft_tuple_normalize(ft_read_coords(str));
+	dir = ft_create_vector(dir.x, dir.y, dir.z);
 	free(str);
 
-	c.transform = ft_matrix_scaling(dir.x, dir.y, dir.z);
-	c.transform = ft_matrix_multiply(c.transform, ft_matrix_translation(o.x, o.y, o.z));
-
+	c.transform = ft_view_transform(o, dir, ft_create_vector(0, 1, 0));
+	
 	w.camera = c;
 	return (w);
 }
@@ -133,14 +138,18 @@ t_world	ft_read_light(t_world w, char *line)
 	float	ratio;
 
 	str = ft_get_word(line, 2);
+
 	l.position = ft_read_coords(str);
-	free(str);
-	str = ft_get_word(line, 3);
-	l.intensity = ft_read_color(str);
+	l.position.w = 1;
 	free(str);
 	str = ft_get_word(line, 4);
+
+	l.intensity = ft_read_color(str);
+	free(str);
+	str = ft_get_word(line, 3);
 	ratio = (float) ft_atof(str);
 	l.intensity = ft_color_multiply_byscalar(l.intensity, ratio);
+	l = ft_point_light(l.position, l.intensity);
 	free(str);
 	return (ft_world_add_light(w, l));
 }
@@ -171,18 +180,18 @@ t_color	ft_read_color(char *str)
 	t_color	c;
 	int		i;
 
-	c.red = ft_atof(str);
+	c.red = ft_atof(str)/255;
 	i = 0;
 	while (str[i] != '\0' && str[i] != ',')
 		i++;
 	if (str[i] == ',')
 		i++;
-	c.green = ft_atof(&str[i]);
+	c.green = ft_atof(&str[i])/255;
 	while (str[i] != '\0' && str[i] != ',')
 		i++;
 	if (str[i] == ',')
 		i++;
-	c.blue = ft_atof(&str[i]);
+	c.blue = ft_atof(&str[i])/255;
 	c = ft_color(c.red, c.green, c.blue);
 	return (c);
 }
@@ -202,8 +211,9 @@ t_world	ft_read_sphere(t_world w, char *line)
 	str = ft_get_word(line, 2);
 	o = ft_read_coords(str);
 	s.transform = ft_matrix_multiply(
-					ft_matrix_scaling(fdiam, fdiam, fdiam),
-					ft_matrix_translation(o.x, o.y, o.z));
+					ft_matrix_translation(o.x, o.y, o.z),
+					ft_matrix_scaling(fdiam, fdiam, fdiam)
+					);
 	free(str);
 	str = ft_get_word(line, 4);
 	color = ft_read_color(str);
@@ -216,13 +226,12 @@ t_world	ft_read_sphere(t_world w, char *line)
 t_world	ft_read_plane(t_world w, char *line)
 {
 	char	*str;
-	char	*vector;
-	char	*color;
 	t_shape	p;
 	t_tuple	dir;
 	t_tuple	o;
 
 	p = ft_plane();
+	p.material = ft_material();
 	str = ft_get_word(line, 2);
 	o = ft_read_coords(str);
 	free(str);
@@ -230,8 +239,13 @@ t_world	ft_read_plane(t_world w, char *line)
 	str = ft_get_word(line, 3);
 	dir = ft_tuple_normalize(ft_read_coords(str));
 	p.transform = ft_matrix_multiply(
-					ft_matrix_scaling(dir.x, dir.y, dir.z),
-					ft_matrix_translation(o.x, o.y, o.z));
+					ft_matrix_multiply(
+					ft_matrix_multiply(
+					ft_matrix_translation(o.x, o.y, o.z),
+					ft_matrix_rotation_x(M_PI * sinf(dir.y))),
+					ft_matrix_rotation_y(M_PI * sinf(dir.x))),
+					ft_matrix_rotation_z(M_PI * sinf( M_PI *  dir.z)));
+					
 	free(str);
 
 	str = ft_get_word(line, 4);
@@ -290,12 +304,29 @@ t_world	ft_parse_line(t_world w, char *line)
 	return (w);
 }
 
+void	ft_print_world(t_world w)
+{
+	int	i;
+
+	i = 0;
+	printf("lights:\n");
+	while (i < w.n_lights)
+	{
+		printf("%f %f %f %f\n", w.lights[i].position.x, w.lights[i].position.y, w.lights[i].position.z, w.lights[i].position.w);
+		printf("%f %f %f\n",w.lights[i].intensity.red, w.lights[i].intensity.green, w.lights[i].intensity.blue);
+		i++;
+	}
+	printf("_________________\n");
+}
+
+
 int	main(int argc, char *argv[])
 {
 	int		fd;
 	char	*line;
 	t_world	world;
 
+	world = ft_world();
 	if (argc == 2 && ft_is_rt(argv[1]))
 	{
 		fd = open(argv[1], O_RDONLY);
@@ -309,7 +340,8 @@ int	main(int argc, char *argv[])
 				line = get_next_line(fd);
 			}
 		}
-		ft_render(world.camera, world);
+		ft_print_world(world);
+		ft_canvas_to_ppm(ft_render(world.camera, world));
 	}
 	else
 		printf("Specify .rt file as input.\n");

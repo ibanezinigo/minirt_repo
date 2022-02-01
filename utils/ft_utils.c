@@ -15,6 +15,15 @@ double ft_atof(const char *s)
   double a = 0.0;
   int e = 0;
   int c;
+  int	negative;
+
+  if (*s == '-')
+  {
+	  negative = -1;
+	  s++;
+  }
+  else
+	negative = 1;
   while ((c = *s++) != '\0' && ft_isdigit(c)) {
     a = a*10.0 + (c - '0');
   }
@@ -48,5 +57,5 @@ double ft_atof(const char *s)
     a *= 0.1;
     e++;
   }
-  return a;
+  return a * negative;
 }
