@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 18:45:42 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/02/03 16:24:45 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/03 19:53:39 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@ int	main(int argc, char *argv[])
 				free(line);
 				line = get_next_line(fd);
 			}
+		}
+		close(fd);
+		fd = 0;
+		while (fd < world.n_spheres)
+		{
+			world.spheres[fd].material.ambient_color = world.ambient_color;
+			world.spheres[fd].material.ambient = world.ambient_intensity;
+			fd++;
 		}
 		ft_canvas_to_ppm(ft_render(world.camera, world));
 	}
