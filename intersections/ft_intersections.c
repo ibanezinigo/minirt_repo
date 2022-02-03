@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 11:55:18 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/31 10:37:02 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/03 18:28:33 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,30 @@
 
 t_intersections	ft_sphere_intersect(t_shape s, t_ray r)
 {
-	t_intersections	inter;
+	t_intersections	i;
 	t_tuple			sph_to_ray;
 	float			a;
 	float			b;
-	float			c;
 	float			discrimininant;
 
 	sph_to_ray = ft_subtract_tuples(r.origin, ft_create_point(0, 0, 0));
 	a = ft_tuple_dot(r.direction, r.direction);
 	b = 2 * ft_tuple_dot(r.direction, sph_to_ray);
-	c = ft_tuple_dot(sph_to_ray, sph_to_ray) - 1;
-	discrimininant = (pow(b, 2) - (4 * a * c));
+	discrimininant = (pow(b, 2)
+			- (4 * a * (ft_tuple_dot(sph_to_ray, sph_to_ray) - 1)));
 	if (discrimininant < 0)
 	{
-		inter.count = 0;
-		inter.xs = NULL;
-		return (inter);
+		i.count = 0;
+		i.xs = NULL;
+		return (i);
 	}
 	else
 	{
-		inter.count = 2;
-		inter.xs = malloc(sizeof(t_intersection) * inter.count);
-		inter.xs[0].t = (-b - sqrt(discrimininant)) / (2 * a);
-		inter.xs[0].object = s;
-		inter.xs[1].t = (-b + sqrt(discrimininant)) / (2 * a);
-		inter.xs[1].object = s;
-		return (inter);
+		i.count = 2;
+		i.xs = malloc(sizeof(t_intersection) * i.count);
+		i.xs[0] = ft_intersection((-b - sqrt(discrimininant)) / (2 * a), s);
+		i.xs[1] = ft_intersection((-b + sqrt(discrimininant)) / (2 * a), s);
+		return (i);
 	}
 }
 
@@ -77,81 +74,49 @@ t_intersection	ft_hit(t_intersections inter)
 	int				i;
 	t_intersection	nul;
 
+	nul.t = -1;
 	if (inter.count == 0)
-	{
-		nul.t = -1;
 		return (nul);
-	}
 	minpos = -1;
 	minvalue = -1;
-	i = 0;
-	while (i < inter.count)
+	i = -1;
+	while (++i < inter.count)
 	{
 		if ((inter.xs[i].t < minvalue || minvalue == -1) && inter.xs[i].t >= 0)
 		{
 			minpos = i;
 			minvalue = inter.xs[i].t;
 		}
-		i++;
 	}
 	if (minpos == -1)
-	{
-		nul.t = -1;
 		return (nul);
-	}
 	return (inter.xs[minpos]);
 }
 
 t_intersections	ft_add_intersections(t_intersections *dest, t_intersections new)
 {
-	t_intersections	result;
+	t_intersections	r;
 	int				i;
 	int				saved;
 
 	if (new.count > 0)
 	{
-		result.count = dest->count + new.count;
-		result.xs = malloc(sizeof(t_intersection) * result.count);
+		r.count = dest->count + new.count;
+		r.xs = malloc(sizeof(t_intersection) * r.count);
 		saved = 0;
-		i = 0;
-		while (i < dest->count)
+		i = -1;
+		while (++i < dest->count)
+			r.xs[i] = ft_intersection(dest->xs[i].t, dest->xs[i].object);
+		saved = i;
+		i = -1;
+		while (++i < new.count)
 		{
-			result.xs[saved].object = dest->xs[i].object;
-			result.xs[saved].t = dest->xs[i].t;
+			r.xs[saved] = new.xs[i];
 			saved++;
-			i++;
-		}
-		i = 0;
-		while (i < new.count)
-		{
-			result.xs[saved] = new.xs[i];
-			saved++;
-			i++;
 		}
 		if (dest->count > 0)
 			free(dest->xs);
-		return (result);
+		return (r);
 	}
 	return (*dest);
-}
-
-t_comps	ft_prepare_computations(t_intersection inter, t_ray ray)
-{
-	t_comps	comp;
-
-	comp.t = inter.t;
-	comp.object = inter.object;
-	comp.point = ft_ray_position(ray, comp.t);
-	comp.eyev = ft_multiply_tuple(ray.direction, -1);
-	comp.normalv = ft_normal_at(comp.object, comp.point);
-	if (ft_tuple_dot(comp.normalv, comp.eyev) < 0)
-	{
-		comp.inside = 1;
-		comp.normalv = ft_multiply_tuple(comp.normalv, -1);
-	}
-	else
-		comp.inside = 0;
-	comp.over_point = ft_add_tuples(comp.point,
-			ft_multiply_tuple(comp.normalv, 0.0001));
-	return (comp);
 }

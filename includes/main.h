@@ -6,11 +6,13 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 19:16:53 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/02/01 19:17:12 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/03 15:46:29 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAIN_H
 # define MAIN_H
+
 void	ft_print_world(t_world w);
+
 #endif

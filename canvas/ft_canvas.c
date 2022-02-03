@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:03:43 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/02/01 13:14:55 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:06:15 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_free_canvas(t_canvas c)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < c.height)
@@ -28,8 +28,8 @@ void	ft_free_canvas(t_canvas c)
 t_canvas	ft_canvas(size_t w, size_t h)
 {
 	t_canvas	canvas;
-	int			i;
-	int			j;
+	size_t		i;
+	size_t		j;
 
 	canvas.width = w;
 	canvas.height = h;
@@ -92,10 +92,10 @@ void	ft_read_pixel(FILE *f, t_canvas canvas, size_t x, size_t y)
 
 void	ft_canvas_to_ppm(t_canvas c)
 {
-	FILE	*f;
-	int		w;
-	int		h;
-	int		total;
+	FILE		*f;
+	size_t		w;
+	size_t		h;
+	size_t		total;
 
 	f = fopen("test.ppm", "w+");
 	fprintf(f, "P3\n");
@@ -111,8 +111,6 @@ void	ft_canvas_to_ppm(t_canvas c)
 			ft_read_pixel(f, c, w, h);
 			if (w < (c.width - 1))
 				fprintf(f, " ");
-			//if ((total + 1) % 5 == 0)
-				//fprintf(f, "\n");
 			total++;
 		}
 		fprintf(f, "\n");

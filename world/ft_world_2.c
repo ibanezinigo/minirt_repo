@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 11:25:07 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/02/01 12:01:37 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:05:11 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,22 +59,39 @@ t_world	ft_world_add_sphere(t_world world, t_shape sphere)
 int	ft_is_shadowed(t_world world, t_tuple point)
 {
 	t_tuple			v;
-	float			distance;
 	t_tuple			direction;
 	t_ray			ray;
 	t_intersections	intersections;
 	t_intersection	hit;
 
 	v = ft_subtract_tuples(world.lights[0].position, point);
-	distance = ft_tuple_magnitude(v);
 	direction = ft_tuple_normalize(v);
 	ray = ft_ray(point, direction);
 	intersections = ft_intersect_world(world, ray);
 	hit = ft_hit(intersections);
 	if (intersections.count > 0)
 		free(intersections.xs);
-	if (hit.t != -1 && hit.t < distance)
+	if (hit.t != -1 && hit.t < ft_tuple_magnitude(v))
 		return (1);
 	else
 		return (0);
+}
+
+t_color	ft_color_at(t_world w, t_ray r)
+{
+	t_intersections	inter;
+	t_intersection	hit;
+	t_comps			c;
+
+	inter = ft_intersect_world(w, r);
+	hit = ft_hit(inter);
+	if (inter.count > 0)
+		free(inter.xs);
+	if (hit.t < 0)
+		return (ft_color(0, 0, 0));
+	else
+	{
+		c = ft_prepare_computations(hit, r);
+		return (ft_shade_hit(hit.object, w, c));
+	}
 }

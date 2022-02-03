@@ -1,0 +1,68 @@
+camera/ft_camera.c: OK!
+cylinders/ft_cylinders.c: OK!
+cylinders/ft_cylinders_2.c: OK!
+cones/ft_cones.c: OK!
+cones/ft_cones_2.c: OK!
+shapes/ft_shapes.c: OK!
+matrices/ft_matrices.c: OK!
+matrices/ft_matrices_2.c: OK!
+matrices/ft_matrices_3.c: OK!
+intersections/ft_intersections_2.c: OK!
+intersections/ft_intersections.c: OK!
+utils/ft_utils.c: OK!
+utils/ft_utils_2.c: OK!
+main/main.c: OK!
+transformations/ft_transformations_2.c: OK!
+transformations/ft_transformations.c: OK!
+canvas/ft_canvas.c: OK!
+world/ft_world.c: OK!
+world/ft_world_2.c: OK!
+spheres/ft_spheres.c: OK!
+tuples/ft_tuples_1.c: OK!
+tuples/ft_tuples.c: OK!
+tuples/ft_tuples_3.c: OK!
+tuples/ft_tuples_2.c: OK!
+get_next_line/get_next_line_utils.c: OK!
+get_next_line/get_next_line.c: OK!
+planes/ft_planes.c: OK!
+parser/ft_parser.c: OK!
+parser/ft_parser_2.c: Error!
+Error: TOO_MANY_LINES       (line:  72, col:   1):	Function has more than 25 lines
+patterns/ft_patterns.c: OK!
+patterns/ft_patterns_2.c: OK!
+patterns/ft_patterns_3.c: OK!
+lights/ft_lights.c: OK!
+materials/ft_materials.c: Error!
+Error: LINE_TOO_LONG        (line:  30, col:  85):	line too long
+Error: TOO_MANY_ARGS        (line:  31, col:  50):	Function has more than 4 arguments
+Error: TOO_MANY_VARS_FUNC   (line:  38, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  39, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  40, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  41, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  42, col:   1):	Too many variables declarations in a function
+Error: LINE_TOO_LONG        (line:  48, col:  84):	line too long
+Error: LINE_TOO_LONG        (line:  49, col:  82):	line too long
+Error: TOO_MANY_LINES       (line:  80, col:   1):	Function has more than 25 lines
+includes/ft_canvas.h: OK!
+includes/ft_rays.h: OK!
+includes/ft_tuples.h: OK!
+includes/ft_cones.h: OK!
+includes/ft_cylinders.h: OK!
+includes/ft_patterns.h: OK!
+includes/ft_definitions.h: OK!
+includes/ft_parser.h: OK!
+includes/ft_camera.h: OK!
+includes/ft_shapes.h: OK!
+includes/ft_intersections.h: OK!
+includes/ft_world.h: OK!
+includes/get_next_line.h: OK!
+includes/ft_utils.h: OK!
+includes/main.h: OK!
+includes/ft_spheres.h: OK!
+includes/ft_planes.h: OK!
+includes/ft_lights.h: OK!
+includes/ft_transformations.h: OK!
+includes/ft_matrices.h: OK!
+includes/ft_materials.h: Error!
+Error: TOO_MANY_ARGS        (line:  25, col:  62):	Function has more than 4 arguments
+rays/ft_rays.c: OK!

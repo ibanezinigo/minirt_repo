@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 11:26:15 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/31 11:28:40 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:50:03 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,21 @@ t_matrix	ft_submatrix(t_matrix m, size_t row, size_t col)
 
 	matrix = ft_matrix(m.rows - 1, m.cols - 1);
 	r = 0;
-	c = 0;
-	i = 0;
-	while (i < m.rows)
+	i = -1;
+	while (++i < m.rows)
 	{
-		j = 0;
+		j = -1;
 		c = 0;
-		while (j < m.cols)
+		while (++j < m.cols)
 		{
 			if (i != row && j != col)
 			{
 				matrix.data[r][c] = m.data[i][j];
 				c++;
 			}
-			j++;
 		}
 		if (i != row)
 			r++;
-		i++;
 	}
 	return (matrix);
 }
@@ -68,7 +65,7 @@ float	ft_cofactor(t_matrix m, size_t row, size_t col)
 
 float	ft_determinant(t_matrix m)
 {
-	int		i;
+	size_t	i;
 	float	result;
 
 	result = 0;

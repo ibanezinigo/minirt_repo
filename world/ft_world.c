@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:36:01 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/31 12:55:34 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/03 19:47:34 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,40 +44,44 @@ t_world	ft_default_world(void)
 	return (w);
 }
 
+void	ft_order_intersects(t_intersections *xs)
+{
+	int				i;
+	int				j;
+	t_intersection	inter;
+
+	i = -1;
+	while (++i < xs->count)
+	{
+		j = i;
+		while (++j < xs->count)
+		{
+			if (xs->xs[j].t < xs->xs[i].t)
+			{
+				inter = xs->xs[j];
+				xs->xs[j] = xs->xs[i];
+				xs->xs[i] = inter;
+			}
+		}
+	}
+}
+
 t_intersections	ft_intersect_world(t_world world, t_ray ray)
 {
 	t_intersections	xs;
 	t_intersections	tmp;
-	t_intersection	inter;
 	int				i;
-	int				j;
 
 	xs.count = 0;
-	i = 0;
-	while (i < world.n_spheres)
+	i = -1;
+	while (++i < world.n_spheres)
 	{
 		tmp = ft_intersect(&world.spheres[i], ray);
 		xs = ft_add_intersections(&xs, tmp);
 		if (tmp.count > 0)
 			free(tmp.xs);
-		i++;
 	}
-	i = 0;
-	while (i < xs.count)
-	{
-		j = i + 1;
-		while (j < xs.count)
-		{
-			if (xs.xs[j].t < xs.xs[i].t)
-			{
-				inter = xs.xs[j];
-				xs.xs[j] = xs.xs[i];
-				xs.xs[i] = inter;
-			}
-			j++;
-		}
-		i++;
-	}
+	ft_order_intersects(&xs);
 	return (xs);
 }
 
@@ -92,28 +96,9 @@ t_color	ft_shade_hit(t_shape shape, t_world w, t_comps c)
 	while (i < w.n_lights)
 	{
 		is_shadowed = ft_is_shadowed(w, c.over_point);
-		result = ft_color_add(result, ft_lighting(shape, c.object.material,
-					w.lights[i], c.over_point, c.eyev, c.normalv, is_shadowed));
+		result = ft_color_add(result, ft_lighting(shape,
+					c, w.lights[i], is_shadowed));
 		i++;
 	}
 	return (result);
-}
-
-t_color	ft_color_at(t_world w, t_ray r)
-{
-	t_intersections	inter;
-	t_intersection	hit;
-	t_comps			c;
-
-	inter = ft_intersect_world(w, r);
-	hit = ft_hit(inter);
-	if (inter.count > 0)
-		free(inter.xs);
-	if (hit.t < 0)
-		return (ft_color(0, 0, 0));
-	else
-	{
-		c = ft_prepare_computations(hit, r);
-		return (ft_shade_hit(hit.object ,w, c));
-	}
 }

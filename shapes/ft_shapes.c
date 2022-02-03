@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 18:50:12 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/31 18:10:12 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/03 15:44:25 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ t_shape	ft_test_shape(void)
 
 void	ft_set_transform(t_shape *s, t_matrix translation)
 {
-	int	x;
-	int	y;
+	size_t	x;
+	size_t	y;
 
 	y = 0;
 	while (y < s->transform.rows && y < translation.rows)
@@ -42,7 +42,6 @@ void	ft_set_transform(t_shape *s, t_matrix translation)
 
 t_intersections	ft_intersect(t_shape *shape, t_ray ray)
 {
-	t_ray			local_ray;
 	t_intersections	xs;
 
 	shape->saved_ray = ft_ray_transform(ray, ft_inverse(shape->transform));
@@ -68,7 +67,7 @@ t_tuple	ft_normal_at(t_shape s, t_tuple t)
 
 	object_point = ft_multiply_matrix_tuple(ft_inverse(s.transform), t);
 	if (s.shape_type == 1)
-		object_normal = ft_normal_at_sphere(s, object_point);
+		object_normal = ft_normal_at_sphere(object_point);
 	else if (s.shape_type == 2)
 		object_normal = ft_normal_at_plane();
 	else if (s.shape_type == 3)
@@ -78,7 +77,7 @@ t_tuple	ft_normal_at(t_shape s, t_tuple t)
 	else
 	{
 		printf("Error at ft_normal_at -> no shape type defined\n");
-		object_normal = ft_normal_at_sphere(s, object_point);
+		object_normal = ft_normal_at_sphere(object_point);
 	}
 	world_normal = ft_multiply_matrix_tuple(
 			ft_matrix_transpose(ft_inverse(s.transform)), object_normal);

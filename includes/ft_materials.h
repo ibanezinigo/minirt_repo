@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 12:02:12 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/31 12:54:30 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/03 19:44:29 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 # include <math.h>
 
 t_material	ft_material(void);
-t_color		ft_lighting(t_shape shape, t_material material, t_light light, t_tuple point,
-				t_tuple eyev, t_tuple normalv, int in_shadow);
+t_color		ft_lighting(t_shape shape, t_comps c, t_light light, int in_shadow);
+
 #endif

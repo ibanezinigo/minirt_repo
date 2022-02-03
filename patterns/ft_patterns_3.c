@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matrices_3.c                                    :+:      :+:    :+:   */
+/*   ft_patterns_3.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/31 11:27:15 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/02/03 15:42:08 by iibanez-         ###   ########.fr       */
+/*   Created: 2022/02/03 15:52:58 by iibanez-          #+#    #+#             */
+/*   Updated: 2022/02/03 15:53:06 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_matrices.h"
+#include "ft_patterns.h"
 
-void	ft_print_matrix(t_matrix m)
+void	ft_set_pattern_transform(t_pattern s, t_matrix translation)
 {
 	size_t	x;
 	size_t	y;
 
 	y = 0;
-	while (y < m.rows)
+	while (y < s.transform.rows && y < translation.rows)
 	{
 		x = 0;
-		while (x < m.cols)
+		while (x < s.transform.cols && y < translation.cols)
 		{
-			printf("%f\t", m.data[y][x]);
+			s.transform.data[y][x] = translation.data[y][x];
 			x++;
 		}
 		y++;
-		printf("\n");
 	}
 }

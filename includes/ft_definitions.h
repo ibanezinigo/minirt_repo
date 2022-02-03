@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 15:54:51 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/31 11:51:10 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/03 12:49:33 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_material
 {
 	t_color		color;
 	float		ambient;
+	t_color		ambient_color;
 	float		diffuse;
 	float		specular;
 	float		shininess;
@@ -116,7 +117,8 @@ typedef struct s_world
 	int			n_spheres;
 	t_shape		*spheres;
 	t_camera	camera;
-
+	float		ambient_intensity;
+	t_color		ambient_color;
 }	t_world;
 
 typedef struct s_comps

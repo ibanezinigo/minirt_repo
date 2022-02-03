@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 11:52:36 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/28 13:36:17 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/03 15:44:50 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_tuple	ft_reflect(t_tuple in, t_tuple normal)
 	return (reflection);
 }
 
-t_tuple	ft_normal_at_sphere(t_shape s, t_tuple object_point)
+t_tuple	ft_normal_at_sphere(t_tuple object_point)
 {
 	t_tuple	object_normal;
 
