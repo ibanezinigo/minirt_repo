@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 17:39:02 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/02/03 17:39:10 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/10 11:27:12 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_intersections	ft_cones_intersect(t_shape cone, t_ray ray)
 	ft_calc_vars_cones(ray, &var[0], &var[1], &var[2]);
 	if (var[0] < 0.00001 && var[0] > -0.00001)
 	{
+		inter.count = 0;
 		inter.xs = malloc(sizeof(t_intersection) * 4);
 		if (var[1] < 0.00001 && var[1] > -0.00001)
 			return (ft_intersect_caps_2(cone, ray, inter));

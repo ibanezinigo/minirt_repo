@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 17:39:36 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/02/03 17:41:21 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/10 20:11:04 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ t_shape	ft_cylinder(void)
 {
 	t_shape	cylinder;
 
-	cylinder.transform = ft_matrix_translation(0, 0, 0);
+	cylinder.transform = ft_identity_matrix();
 	cylinder.material = ft_material();
 	cylinder.shape_type = 3;
-	cylinder.minimum = INFINITY * -1;
+	cylinder.minimum = 0;
 	cylinder.maximum = INFINITY;
-	cylinder.closed = 0;
+	cylinder.closed = 1;
 	return (cylinder);
 }
 

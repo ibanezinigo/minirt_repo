@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:45:34 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/02/03 17:32:27 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/11 18:06:34 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,24 +52,26 @@ double	ft_atof(const char *str)
 	double	res;
 	double	res2;
 	char	*c;
-	int		len;
+	int		neg;
 
 	c = (char *)str;
+	neg = 1;
+	if (*c == '-')
+	{
+		neg = -1;
+		c++;
+	}
+	else if (*c == '+')
+		c++;
 	res = (double)ft_atoi(c);
-	while (*c && *c != '.')
+	while (*c && *c != '.' && *c != ',')
 		c++;
 	if (*c == '.')
 		c++;
 	res2 = (double)ft_atoi(c);
-	len = 0;
-	while (c[len])
-		len++;
-	while (len--)
+	while (res2 >= 1)
 		res2 /= 10;
-	if (res >= 0)
-		return (res + res2);
-	else
-		return (res + -res2);
+	return ((res + res2) * neg);
 }
 
 int	ft_is_rt(char *str)

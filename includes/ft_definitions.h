@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 15:54:51 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/02/03 12:49:33 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/14 16:34:59 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,10 @@ typedef struct s_world
 	int			n_spheres;
 	t_shape		*spheres;
 	t_camera	camera;
+	int			camera_def;
 	float		ambient_intensity;
 	t_color		ambient_color;
+	int			ambient_def;
 }	t_world;
 
 typedef struct s_comps
@@ -131,4 +133,19 @@ typedef struct s_comps
 	int			inside;
 	t_tuple		over_point;
 }	t_comps;
+
+typedef struct s_info
+{
+	void		*mlx;
+	void		*mlx_win;
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+	long double	width;
+	long double	height;
+
+}	t_info;
+
 #endif

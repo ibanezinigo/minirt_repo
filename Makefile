@@ -2,9 +2,10 @@ NAME = minirt
 
 CC= gcc
 
-CFLAGS= -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS= -Wall -Wextra -Werror 
+MINILIBX = -I .minilibx -L .minilibx -lmlx -framework OpenGL -framework Appkit
 
-MAIN = main
+MAIN = main main_2
 CAMERA = ft_camera
 CANVAS = ft_canvas
 CONES = ft_cones ft_cones_2
@@ -14,7 +15,7 @@ INTERSECTIONS = ft_intersections ft_intersections_2
 LIGHTS = ft_lights
 MATERIALS = ft_materials
 MATRICES = ft_matrices ft_matrices_2 ft_matrices_3
-PARSER = ft_parser ft_parser_2
+PARSER = ft_parser ft_parser_2 ft_parser_3 ft_parser_4
 PATTERNS = ft_patterns ft_patterns_2 ft_patterns_3
 PLANES = ft_planes
 RAYS = ft_rays
@@ -51,16 +52,17 @@ OBJ = $(SRC:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) -I ./includes -o $(NAME) $(OBJ) 
+	@make -C ./.minilibx
+	@$(CC) $(CFLAGS) $(MINILIBX) -I ./includes -o $(NAME) $(OBJ)
 
 %.o: %.c
-		@${CC} ${CFLAGS} -I ./includes -c $< -o $@
+	@${CC} ${CFLAGS} -I ./includes  -c $< -o $@
 
 clean:
 	@rm -f $(OBJ)
+	@make clean -C ./.minilibx/
 
-fclean:
-	@rm -f $(OBJ)
+fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 11:25:07 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/02/03 16:05:11 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/08 18:09:48 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_world	ft_world_add_sphere(t_world world, t_shape sphere)
 	return (newworld);
 }
 
-int	ft_is_shadowed(t_world world, t_tuple point)
+int	ft_is_shadowed(t_world world, t_tuple point, int i)
 {
 	t_tuple			v;
 	t_tuple			direction;
@@ -64,7 +64,7 @@ int	ft_is_shadowed(t_world world, t_tuple point)
 	t_intersections	intersections;
 	t_intersection	hit;
 
-	v = ft_subtract_tuples(world.lights[0].position, point);
+	v = ft_subtract_tuples(world.lights[i].position, point);
 	direction = ft_tuple_normalize(v);
 	ray = ft_ray(point, direction);
 	intersections = ft_intersect_world(world, ray);

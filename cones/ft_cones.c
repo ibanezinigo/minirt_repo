@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:10:07 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/02/03 17:38:55 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/10 11:52:38 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ t_shape	ft_cone(void)
 	cone.transform = ft_identity_matrix();
 	cone.material = ft_material();
 	cone.shape_type = 4;
-	cone.minimum = INFINITY * -1;
-	cone.maximum = INFINITY;
-	cone.closed = 0;
+	cone.minimum = -1;
+	cone.maximum = 0;
+	cone.closed = 1;
 	return (cone);
 }
 

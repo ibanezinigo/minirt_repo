@@ -6,11 +6,13 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:19:14 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/02/03 19:50:36 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/14 17:13:58 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_parser.h"
+#include "ft_tuples.h"
+#include "ft_definitions.h"
 
 t_world	ft_read_sphere(t_world w, char *line)
 {
@@ -28,7 +30,8 @@ t_world	ft_read_sphere(t_world w, char *line)
 	o = ft_read_coords(str);
 	s.transform = ft_matrix_multiply(
 			ft_matrix_translation(o.x, o.y, o.z),
-			ft_matrix_scaling(fdiam, fdiam, fdiam));
+			ft_matrix_scaling(fdiam / 2, fdiam / 2, fdiam / 2)
+			);
 	free(str);
 	str = ft_get_word(line, 4);
 	color = ft_read_color(str);
@@ -53,7 +56,7 @@ t_world	ft_read_plane(t_world w, char *line)
 	free(str);
 	str = ft_get_word(line, 3);
 	dir = ft_read_coords(str);
-	dir.w = 0;
+	ft_validate_vector(dir);
 	dir = ft_tuple_normalize(dir);
 	p.transform = ft_identity_matrix();
 	p.transform = ft_matrix_multiply(p.transform,
@@ -69,50 +72,56 @@ t_world	ft_read_plane(t_world w, char *line)
 	return (ft_world_add_sphere(w, p));
 }
 
-t_world	ft_read_cylinder(t_world w, char *line)
+t_shape	ft_read_cylinder_2(t_shape cyl, char *line, float num)
 {
-	char	*coords;
-	char	*vector;
-	char	*diam;
-	char	*height;
-	char	*color;
+	char	*str;
+	t_tuple	o;	
 
-	coords = ft_get_word(line, 2);
-	vector = ft_get_word(line, 3);
-	diam = ft_get_word(line, 4);
-	height = ft_get_word(line, 5);
-	color = ft_get_word(line, 6);
-	free(coords);
-	free(vector);
-	free(diam);
-	free(height);
-	free(color);
-	return (w);
+	str = ft_get_word(line, 2);
+	o = ft_read_coords(str);
+	free(str);
+	cyl.transform = ft_matrix_multiply(cyl.transform,
+			ft_matrix_translation(o.x, o.y, o.z));
+	str = ft_get_word(line, 3);
+	o = ft_read_coords(str);
+	ft_validate_vector(o);
+	free(str);
+	cyl.transform = ft_matrix_multiply(cyl.transform,
+			ft_matrix_rotation_x(o.z * (M_PI / 2)));
+	cyl.transform = ft_matrix_multiply(cyl.transform,
+			ft_matrix_rotation_z(o.x * (M_PI / 2)));
+	cyl.transform = ft_matrix_multiply(cyl.transform,
+			ft_matrix_scaling(num / 2, num / 2, num / 2));
+	cyl.maximum = cyl.maximum / num;
+	return (cyl);
 }
 
-t_world	ft_parse_line(t_world w, char *line)
+t_world	ft_read_cylinder(t_world w, char *line)
 {
-	char	*word;
+	char	*str;
+	t_shape	cyl;
+	t_color	color;
+	float	num;
 
-	word = ft_get_word(line, 1);
-	if (ft_strequals(word, "A"))
-		w = ft_read_ambient_ligth(w, line);
-	else if (ft_strequals(word, "C"))
-		w = ft_read_camera(w, line);
-	else if (ft_strequals(word, "L"))
-		w = ft_read_light(w, line);
-	else if (ft_strequals(word, "sp"))
-		w = ft_read_sphere(w, line);
-	else if (ft_strequals(word, "pl"))
-		w = ft_read_plane(w, line);
-	else if (ft_strequals(word, "cy"))
-		w = ft_read_cylinder(w, line);
-	else
-	{
-		printf("ERROR\n");
-		free(word);
-		exit(0);
-	}
+	str = ft_get_word(line, 6);
+	color = ft_read_color(str);
+	free(str);
+	cyl = ft_cylinder();
+	cyl.material.color = color;
+	str = ft_get_word(line, 5);
+	num = ft_atof(str);
+	free(str);
+	cyl.maximum = num * 2;
+	str = ft_get_word(line, 4);
+	num = ft_atof(str);
+	free(str);
+	cyl = ft_read_cylinder_2(cyl, line, num);
+	return (ft_world_add_sphere(w, cyl));
+}
+
+void	ft_exit_parser(char *word)
+{
+	printf("ERROR\nmalformed .rt file\n");
 	free(word);
-	return (w);
+	exit(0);
 }

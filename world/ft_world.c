@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:36:01 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/02/03 19:47:34 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/08 18:10:31 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_world	ft_world(void)
 	world.n_spheres = 0;
 	world.lights = NULL;
 	world.spheres = NULL;
+	world.ambient_def = 0;
+	world.camera_def = 0;
 	return (world);
 }
 
@@ -95,7 +97,7 @@ t_color	ft_shade_hit(t_shape shape, t_world w, t_comps c)
 	i = 0;
 	while (i < w.n_lights)
 	{
-		is_shadowed = ft_is_shadowed(w, c.over_point);
+		is_shadowed = ft_is_shadowed(w, c.over_point, i);
 		result = ft_color_add(result, ft_lighting(shape,
 					c, w.lights[i], is_shadowed));
 		i++;

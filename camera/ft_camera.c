@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:03:27 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/02/03 16:51:08 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/02/10 18:34:53 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,8 @@ t_canvas	ft_render(t_camera camera, t_world world)
 		}
 		y++;
 	}
+	y = 0;
+	free(world.spheres);
+	free(world.lights);
 	return (image);
 }
