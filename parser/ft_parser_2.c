@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:19:14 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/04/27 17:49:20 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/04/27 17:54:38 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,12 @@ t_world	ft_read_plane(t_world w, char *line)
 	ft_validate_vector(dir);
 	dir = ft_tuple_normalize(dir);
 	p.transform = ft_identity_matrix();
-	
+	p.transform = ft_matrix_multiply(p.transform,
+			ft_matrix_translation(o.x, o.y, o.z));
 	p.transform = ft_matrix_multiply(p.transform,
 			ft_matrix_rotation_x(dir.z * (M_PI / 2)));
 	p.transform = ft_matrix_multiply(p.transform,
 			ft_matrix_rotation_z(dir.x * (M_PI / 2)));
-	p.transform = ft_matrix_multiply(p.transform,
-			ft_matrix_translation(o.x, o.y, o.z));
 	free(str);
 	str = ft_get_word(line, 4);
 	p.material.color = ft_read_color(str);
