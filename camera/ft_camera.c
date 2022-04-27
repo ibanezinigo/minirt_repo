@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:03:27 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/02/10 18:34:53 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/04/27 17:27:23 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_canvas	ft_render(t_camera camera, t_world world)
 		while (x < camera.hsize)
 		{
 			ray = ft_ray_for_pixel(camera, x, y);
-			color = ft_color_at(world, ray);
+			color = ft_color_add(ft_color_at(world, ray), world.ambient_color);
 			ft_write_pixel(image, x, y, color);
 			x++;
 		}

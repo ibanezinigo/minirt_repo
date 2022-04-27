@@ -2,7 +2,7 @@ NAME = minirt
 
 CC= gcc
 
-CFLAGS= -Wall -Wextra -Werror 
+CFLAGS= -g3 -Wall -Wextra -Werror 
 MINILIBX = -I .minilibx -L .minilibx -lmlx -framework OpenGL -framework Appkit
 
 MAIN = main main_2

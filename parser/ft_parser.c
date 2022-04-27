@@ -6,7 +6,7 @@
 /*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:18:23 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/02/14 13:34:35 by iibanez-         ###   ########.fr       */
+/*   Updated: 2022/04/27 17:39:49 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ t_world	ft_read_ambient_ligth(t_world w, char *line)
 		ft_exit_error(12);
 	color = ft_get_word(line, 3);
 	w.ambient_color = ft_read_color(color);
+	w.ambient_color.red = w.ambient_color.red * w.ambient_intensity;
+	w.ambient_color.green = w.ambient_color.green * w.ambient_intensity;
+	w.ambient_color.blue = w.ambient_color.blue * w.ambient_intensity;
 	w.ambient_def = 1;
 	free(color);
 	return (w);
@@ -37,7 +40,7 @@ t_world	ft_read_camera(t_world w, char *line)
 	t_tuple		dir;
 
 	str = ft_get_word(line, 4);
-	c = ft_camera(216, 108, M_PI / 180.0 * ft_atof(str));
+	c = ft_camera(432, 216, M_PI / 180.0 * ft_atof(str));
 	if (ft_atof(str) < 0 || ft_atof(str) > 180)
 		ft_exit_error(11);
 	free(str);
